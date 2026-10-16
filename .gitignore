@@ -1,0 +1,17 @@
+node_modules
+node_modules/
+.next/
+out/
+.sites-runtime/
+.impeccable/review/
+.impeccable/
+.openai/
+dist/
+*.log
+.env*
+!.env.example
+*.ics
+*.pdf
+*backup*.json
+private-data/
+uploads/
