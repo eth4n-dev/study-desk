@@ -11,6 +11,12 @@ npm run dev
 
 Open `http://127.0.0.1:3000`. A fresh browser workspace starts empty. Add subjects in **Settings**, import a timetable `.ics` file or enter classes manually, then add assignments or upload PDFs. `npm test` checks date handling, imports, migration, and planning. `npm run build` produces the static `out/` site.
 
+## Everyday use
+
+In **Study plan**, click a scheduled task once on desktop to open its assignment and files. On touch screens, the first tap selects a block for resizing; a second tap opens it. The task queue also offers **Open file** before a task has any planned time. Files are shown near the top of assignment details, with planned-time removal alongside each reserved block.
+
+**Settings** separates subjects, timetable, study activities, and account data. To add a lecture or exercise, pick its day and time in the week view (drag a range on desktop), then choose the subject and session type. Common durations are one click away; weekly, fortnightly, and single-date sessions are supported. The colour palette closes on selection, Escape, or clicking outside it.
+
 ## How imports work
 
 - **Timetable:** Import a calendar export such as the personal `.ics` file from myStudies. Match each course to an existing subject or create a new one. If the export includes overlapping exercise groups, choose one. **Not chosen yet** leaves that exercise time and room off your timetable; the decision can be changed later. Imports are snapshots, so re-export when your schedule changes.

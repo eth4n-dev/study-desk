@@ -1,6 +1,6 @@
 'use client';
 import {useEffect,useId,useRef,useState} from 'react';
-import {ArrowUpRight,CalendarDays,ChevronDown,Clock3,File,Pencil,Play,Check,X} from 'lucide-react';
+import {ArrowUpRight,CalendarDays,ChevronDown,Clock3,File,Pencil,Play,Check,Trash2,X} from 'lucide-react';
 import {fmt,wallTime,zurichISO,nextNumber,taskType,supportsUploads,plainDashes,repeatRuleForTask,repeatRelease,addDays,moodleSectionForTask,codeExpertUrlForTask,assignmentKindLabel,timeLabel} from '../lib/model.mjs';
 import {useSubjects,useSubjectLookup} from './workspace-context';
 import ProgressSelect from './progress-select';
@@ -73,7 +73,7 @@ function AssignmentForm({task,defaultSubject,tasks,rules,startRepeating,onSave,o
  </form>;
 }
 
-export default function AssignmentDialog({task,defaultSubject,tasks,rules,files,blocks=[],taskEvents=[],startEditing=false,startRepeating=false,onClose,onSave,onDelete,onProgress,onOpenFile,onPlanTask,renderUpload}){
+export default function AssignmentDialog({task,defaultSubject,tasks,rules,files,blocks=[],plannedBlockId,onRemovePlan,taskEvents=[],startEditing=false,startRepeating=false,onClose,onSave,onDelete,onProgress,onOpenFile,onPlanTask,renderUpload}){
  const subject=useSubjectLookup();
  const [editing,setEditing]=useState(startEditing||!task);
  const dialog=useRef(null),heading=useRef(null),editButton=useRef(null),didEdit=useRef(false);
@@ -88,7 +88,7 @@ export default function AssignmentDialog({task,defaultSubject,tasks,rules,files,
  },[]);
  useEffect(()=>{if(!editing&&didEdit.current)editButton.current?.focus({preventScroll:true});didEdit.current=editing;},[editing]);
  function cancelEdit(){if(task)setEditing(false);else onClose();}
- const attached=files.filter(f=>task?.files.includes(f.id));
+ const attached=files.filter(f=>task?.files?.includes(f.id));
  const planned=blocks.filter(block=>block.taskId===task?.id).sort((a,b)=>a.date.localeCompare(b.date)||a.start-b.start);
  const started=taskEvents.find(event=>event.taskId===task?.id&&event.type==='started');
  const finished=taskEvents.find(event=>event.taskId===task?.id&&event.type==='finished');
@@ -102,18 +102,18 @@ export default function AssignmentDialog({task,defaultSubject,tasks,rules,files,
    {editing?<AssignmentForm task={task} defaultSubject={defaultSubject} tasks={tasks} rules={rules} startRepeating={startRepeating} onSave={(value,repeatOptions)=>{onSave(value,repeatOptions);setEditing(false);}} onCancel={cancelEdit}/>:<div className="assignment-overview">
     <p className="assignment-subject"><span className="dot" style={{background:subject(task.subject).color}}/>{subject(task.subject).short}<span className="assignment-kind">{assignmentKindLabel(task)}</span></p>
     <div className="assignment-due"><CalendarDays size={17}/><span>{task.due?<>Due {fmt(task.due,{weekday:'short'})}{task.due&&` · ${fmt(task.due,{day:undefined,month:undefined,hour:'2-digit',minute:'2-digit'})}`}</>:'No deadline'}</span></div>
-    <div className="assignment-lifecycle"><div><span>Progress</span><strong>{task.status}</strong>{started&&<small>Started {fmt(started.at,{weekday:'short'})} · {wallTime(started.at).slice(11,16)}</small>}{finished&&<small>Finished {fmt(finished.at,{weekday:'short'})} · {wallTime(finished.at).slice(11,16)}</small>}</div><button className={`button ${task.status==='In progress'?'primary':''}`} onClick={()=>onProgress(task.status==='Not started'?'In progress':task.status==='In progress'?'Done':'In progress')}>{task.status==='Not started'?<><Play size={15}/>Start now</>:task.status==='In progress'?<><Check size={15}/>Finish now</>:'Reopen assignment'}</button></div>
-    <div className="assignment-planned"><div className="assignment-files-heading"><h3>Study plan</h3><button className="text-button" onClick={()=>onPlanTask(task.id)}>{planned.length?'Add time':'Plan time'}<ArrowUpRight size={14}/></button></div>{planned.length?<div className="assignment-planned-list">{planned.slice(0,3).map(block=><span key={block.id}><Clock3 size={14}/>{fmt(block.date+'T12:00Z',{weekday:'short'})} · {timeLabel(block.start)}–{timeLabel(block.start+block.duration)}</span>)}{planned.length>3&&<small>+{planned.length-3} more planned blocks</small>}</div>:<p className="muted">No time planned yet.</p>}</div>
-    <details className="assignment-more assignment-correct-status"><summary>Correct progress<ChevronDown size={15}/></summary><div className="assignment-progress"><span>Set status</span><ProgressSelect label={`Progress for ${task.title}`} value={task.status} onChange={onProgress}/></div></details>
-    {(moodle||codeExpert)&&<div className="assignment-resource-links">
-     {codeExpert&&<a className="moodle-section-link" href={codeExpert} target="_blank" rel="noopener noreferrer" aria-label={`Open ${task.title} in CodeExpert`}>Open CodeExpert<ArrowUpRight size={15}/></a>}
-     {moodle&&<a className="moodle-section-link" href={moodle} target="_blank" rel="noopener noreferrer" aria-label={`Find ${task.title} on Moodle`}>Find on Moodle<ArrowUpRight size={15}/></a>}
-    </div>}
     {(!online||attached.length>0)&&<section className="assignment-files" aria-label="Assignment files">
      <div className="assignment-files-heading"><h3>Files</h3>{attached.length>0&&<span>{attached.length} attached</span>}</div>
      {attached.length>0&&<div className="assignment-file-list">{attached.map(f=><button type="button" className="assignment-file" onClick={()=>onOpenFile(f)} aria-label={`Open ${f.name}`} key={f.id}><File size={17}/><span>{f.name}</span><span className="assignment-file-action">Open<ArrowUpRight size={14}/></span></button>)}</div>}
      {!online&&supportsUploads(task)&&renderUpload(task,attached.length>0)}
     </section>}
+    <div className="assignment-lifecycle"><div><span>Progress</span><strong>{task.status}</strong>{started&&<small>Started {fmt(started.at,{weekday:'short'})} · {wallTime(started.at).slice(11,16)}</small>}{finished&&<small>Finished {fmt(finished.at,{weekday:'short'})} · {wallTime(finished.at).slice(11,16)}</small>}</div><button className={`button ${task.status==='In progress'?'primary':''}`} onClick={()=>onProgress(task.status==='Not started'?'In progress':task.status==='In progress'?'Done':'In progress')}>{task.status==='Not started'?<><Play size={15}/>Start now</>:task.status==='In progress'?<><Check size={15}/>Finish now</>:'Reopen assignment'}</button></div>
+    <div className="assignment-planned"><div className="assignment-files-heading"><h3>Study plan</h3><button className="text-button" onClick={()=>onPlanTask(task.id)}>{planned.length?'Add time':'Plan time'}<ArrowUpRight size={14}/></button></div>{planned.length?<div className="assignment-planned-list">{planned.map(block=><div className={`assignment-plan-row ${block.id===plannedBlockId?'is-current':''}`} key={block.id}><span><Clock3 size={14}/>{fmt(block.date+'T12:00Z',{weekday:'short'})} · {timeLabel(block.start)}–{timeLabel(block.start+block.duration)}</span>{onRemovePlan&&<button type="button" className="icon-button" aria-label={`Remove planned time ${fmt(block.date+'T12:00Z')} at ${timeLabel(block.start)}`} title="Remove planned time" onClick={()=>onRemovePlan(block.id)}><Trash2 size={15}/></button>}</div>)}</div>:<p className="muted">No time planned yet.</p>}</div>
+    <details className="assignment-more assignment-correct-status"><summary>Correct progress<ChevronDown size={15}/></summary><div className="assignment-progress"><span>Set status</span><ProgressSelect label={`Progress for ${task.title}`} value={task.status} onChange={onProgress}/></div></details>
+    {(moodle||codeExpert)&&<div className="assignment-resource-links">
+     {codeExpert&&<a className="moodle-section-link" href={codeExpert} target="_blank" rel="noopener noreferrer" aria-label={`Open ${task.title} in CodeExpert`}>Open CodeExpert<ArrowUpRight size={15}/></a>}
+     {moodle&&<a className="moodle-section-link" href={moodle} target="_blank" rel="noopener noreferrer" aria-label={`Find ${task.title} on Moodle`}>Find on Moodle<ArrowUpRight size={15}/></a>}
+    </div>}
     {online&&taskType(task)!=='personal'&&<details className="assignment-more optional-attachment"><summary>More actions<ChevronDown size={15}/></summary><div className="optional-attachment-body"><p>Attach a file (optional)</p>{renderUpload(task,true)}</div></details>}
     {task.notes&&<details className="assignment-more"><summary>Notes<ChevronDown size={15}/></summary><p className="assignment-notes">{task.notes}</p></details>}
     {task.exercises?.length>0&&<details className="assignment-more"><summary>Exercises<span className="subtle-label">{task.exercises.length}</span><ChevronDown size={15}/></summary><ul className="assignment-exercises">{task.exercises.map(name=><li key={name}>{name}</li>)}</ul></details>}
