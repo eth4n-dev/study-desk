@@ -99,3 +99,8 @@ create policy "Replace own study files with strong sign in"
   with check (bucket_id = 'study-files'
     and (storage.foldername(name))[1] = (select auth.uid())::text
     and (select public.study_access_allowed()));
+create policy "Delete own study files with strong sign in"
+  on storage.objects for delete to authenticated
+  using (bucket_id = 'study-files'
+    and (storage.foldername(name))[1] = (select auth.uid())::text
+    and (select public.study_access_allowed()));

@@ -1528,3 +1528,19 @@ html[data-theme="light"] .session-durations button[aria-pressed=true] {
     background: #e7eee8;
     border-color: hsl(145 26% 65%)
 }
+
+html[data-theme="light"] button:hover:not(:disabled) { filter: none }
+html[data-theme="light"] .button:hover,
+html[data-theme="light"] .icon-button:hover,
+html[data-theme="light"] .theme-switcher:hover,
+html[data-theme="light"] nav button:hover,
+html[data-theme="light"] .sidebar-bottom>button:hover { background: #dce9df }
+html[data-theme="light"] .button.primary:hover { background: #a8d4b9; border-color: #6ea583 }
+html[data-theme="light"] .overview-toolbar .overview-add:hover { background: #cfe5d4; border-color: #87b095 }
+html[data-theme="light"] nav button.active,
+html[data-theme="light"] .sidebar-bottom>button.active { background: #deebe1; color: #225d40 }
+html[data-theme="light"] .tone-hodl { --event-bg: hsl(80 42% 87%); --event-line: hsl(78 29% 61%); --event-ink: hsl(72 53% 28%); --event-secondary: hsl(73 46% 30%) }
+html[data-theme="light"] .tone-numerical { --event-bg: hsl(155 43% 87%); --event-line: hsl(154 26% 63%); --event-ink: hsl(150 53% 27%); --event-secondary: hsl(151 42% 30%) }
+html[data-theme="light"] .calendar-event:not(.unattended-event) { border-color: var(--event-line) }
+html[data-theme="light"] .calendar-event.unattended-event { --event-bg: #e7eee8; --event-line: #b8cbbd; border-color: #b8cbbd }
+html[data-theme="light"] .library-file-delete:hover:not(:disabled) { color: #9f382e; background: #f6e5e1 }

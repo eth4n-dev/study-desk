@@ -868,3 +868,7 @@ nav button.active,.sidebar-bottom>button.active{background:#1e3930;color:#bcf0d9
 .cloud-gate-card{position:relative}
 .cloud-gate-theme{position:absolute;top:24px;right:24px}
 @media(max-width:760px){.theme-switcher{width:34px;min-width:34px;padding:5px}.theme-switcher span{display:none}}
+.mobile-settings{display:none}
+.library-file-delete{min-width:36px;min-height:36px}
+.library-file-delete:hover:not(:disabled){color:var(--red);background:color-mix(in srgb,var(--red) 14%,var(--panel));filter:none}
+@media(max-width:760px){.mobile-settings{display:inline-flex;min-width:34px;min-height:34px}.library-file{grid-template-columns:auto minmax(0,1fr) 36px 36px}.library-file-open{grid-column:2}.library-file-delete{min-width:36px;min-height:40px}}

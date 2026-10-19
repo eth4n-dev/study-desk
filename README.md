@@ -31,6 +31,7 @@ Assignment names and file titles are kept as supplied. Subject names, short name
 ## Cloud setup for a small group
 
 1. Create a Supabase project and apply [`supabase/001_study_cloud.sql`](supabase/001_study_cloud.sql). It stores one JSON document per account and files under a per-user private path. Row-level security and Storage policies require the signed-in user and a passkey or MFA session.
+   Projects created before file deletion was added must also apply [`supabase/002_delete_own_files.sql`](supabase/002_delete_own_files.sql) once, so the trash action can remove the stored file.
 2. In Supabase Authentication, keep **public sign-ups disabled** and invite each person who should use the app. Configure the site URL and redirect origin for the deployed domain. Enable passkeys for that exact domain. Each friend gets an isolated account and can start an empty workspace.
 3. Set these build variables in your hosting provider; copy [`.env.example`](.env.example) for local cloud testing:
 
