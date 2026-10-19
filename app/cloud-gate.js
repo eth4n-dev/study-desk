@@ -2,6 +2,7 @@
 import {useEffect,useMemo,useState} from 'react';
 import {Fingerprint,GraduationCap,KeyRound,Mail,ShieldCheck} from 'lucide-react';
 import {cloudClient} from '../lib/cloud.mjs';
+import ThemeSwitcher from './theme-switcher';
 
 function hasPasskeySession(session){
  try{
@@ -49,7 +50,7 @@ export default function CloudGate({children}){
 
  const workspace=useMemo(()=>({api,user:session?.user,signOut}),[api,session?.user?.id]);
  if(access==='ready'&&session)return children(workspace);
- return <main className="cloud-gate"><div className="cloud-gate-card">
+ return <main className="cloud-gate"><div className="cloud-gate-card"><div className="cloud-gate-theme"><ThemeSwitcher/></div>
   <div className="cloud-gate-brand"><GraduationCap size={25}/><span>Study <b>desk</b></span></div>
   {access==='checking'?<><h1>Opening Study desk</h1><p>Checking session…</p></>:
   access==='signed-out'?<><div className="cloud-gate-symbol"><Fingerprint size={28}/></div><h1>Sign in</h1><p>Use a saved passkey with Touch ID, Face ID, or device unlock.</p><button className="button primary cloud-gate-primary" onClick={passkey} disabled={busy}><Fingerprint size={18}/>{busy?'Checking…':'Use a saved passkey'}</button><div className="cloud-gate-divider">First sign-in · email link</div><form onSubmit={sendLink} className="cloud-gate-form"><label htmlFor="cloud-email">Email sign-in link</label><div className="cloud-gate-inline"><input id="cloud-email" type="email" autoComplete="email" required value={email} onChange={e=>setEmail(e.target.value)} placeholder="Invited email"/><button className="button" disabled={busy} type="submit"><Mail size={16}/>Send link</button></div></form>{sent&&<p className="cloud-gate-note" role="status">Open the email link to add a passkey.</p>}</>:

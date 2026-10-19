@@ -1,0 +1,1530 @@
+/* Light palette for the existing interface. Add later themes under their own data-theme value. */
+html[data-theme="light"] {
+  --bg: #f7f9f6;
+  --sidebar: #eef3ee;
+  --panel: #ffffff;
+  --raised: #e9f0ea;
+  --line: #cdd8cf;
+  --text: #203029;
+  --muted: #53645a;
+  --accent: #2d7254;
+  --blue: #2c679f;
+  --red: #a8473e;
+  color-scheme: light;
+}
+
+html[data-theme="light"] input::placeholder {
+    color: #46564e
+}
+html[data-theme="light"] ::selection {
+    background: #dce8df;
+    color: #203029
+}
+html[data-theme="light"] * {
+    scrollbar-color: #d6dfd7 var(--bg)
+}
+html[data-theme="light"] .sidebar {
+    border-right: 1px solid #d6dfd7
+}
+html[data-theme="light"] .brand svg {
+    color: hsl(152 35% 33%)
+}
+html[data-theme="light"] .brand b {
+    color: #46564e
+}
+html[data-theme="light"] nav button, html[data-theme="light"] .sidebar-bottom>button {
+    color: #46564e
+}
+html[data-theme="light"] nav button.active, html[data-theme="light"] .sidebar-bottom>button.active {
+    background: #f1f5f0;
+    color: hsl(152 35% 33%)
+}
+html[data-theme="light"] nav button small {
+    background: #e7eee8;
+    color: hsl(150 35% 33%)
+}
+html[data-theme="light"] .subject-heading {
+    color: #46564e
+}
+html[data-theme="light"] .subject-heading>span {
+    color: #46564e
+}
+html[data-theme="light"] .save-status {
+    color: #46564e
+}
+html[data-theme="light"] .save-status>span {
+    background: hsl(146 43% 80%)
+}
+html[data-theme="light"] .topbar {
+    border-bottom: 1px solid #d6dfd7
+}
+html[data-theme="light"] .breadcrumb {
+    color: #46564e
+}
+html[data-theme="light"] .topbar svg {
+    color: #5d6d64
+}
+html[data-theme="light"] .avatar {
+    background: #e7eee8;
+    color: #203029
+}
+html[data-theme="light"] .text-divider {
+    color: #5d6d64
+}
+html[data-theme="light"] .button {
+    border: 1px solid #d6dfd7;
+    background: #f1f5f0
+}
+html[data-theme="light"] .button:hover {
+    background: #e7eee8
+}
+html[data-theme="light"] .button.primary {
+    background: hsl(150 43% 80%);
+    border-color: hsl(150 26% 54%)
+}
+html[data-theme="light"] .icon-button {
+    color: #46564e
+}
+html[data-theme="light"] .icon-button:hover {
+    background: #e7eee8
+}
+html[data-theme="light"] .text-button {
+    color: hsl(150 35% 33%)
+}
+html[data-theme="light"] .text-button.quiet {
+    color: #46564e
+}
+html[data-theme="light"] .count {
+    background: #e7eee8;
+    color: #203029
+}
+html[data-theme="light"] .inbox-strip {
+    border: 1px solid #d6dfd7;
+    background: #f1f5f0
+}
+html[data-theme="light"] .inbox-title {
+    color: hsl(112 35% 33%)
+}
+html[data-theme="light"] .inbox-title>svg {
+    color: hsl(97 35% 33%)
+}
+html[data-theme="light"] .inbox-item {
+    border-top: 1px solid #d6dfd7
+}
+html[data-theme="light"] .subject-line {
+    color: #46564e
+}
+html[data-theme="light"] .subject-line>span:not(.dot) {
+    color: #46564e
+}
+html[data-theme="light"] .drop-target {
+    border: 1px dashed #bfcfc2;
+    background: #f1f5f0
+}
+html[data-theme="light"] .drop-target>button {
+    color: hsl(106 35% 33%)
+}
+html[data-theme="light"] .drop-target.dragging, html[data-theme="light"] .library-drop.dragging {
+    background: hsl(146 43% 91%)
+}
+html[data-theme="light"] .segmented {
+    background: #f8faf7;
+    border: 1px solid #d6dfd7
+}
+html[data-theme="light"] .segmented>button {
+    color: #46564e
+}
+html[data-theme="light"] .segmented>button.selected {
+    color: #203029;
+    background: #e7eee8
+}
+html[data-theme="light"] .segmented>button:hover {
+    color: #203029
+}
+html[data-theme="light"] .segmented>button>span {
+    color: #46564e
+}
+html[data-theme="light"] .calendar-body {
+    border-bottom: 1px solid #d6dfd7
+}
+html[data-theme="light"] .time-gutter>span {
+    color: #46564e
+}
+html[data-theme="light"] .day-column {
+    border-left: 1px solid #d6dfd7
+}
+html[data-theme="light"] .day-column:last-child {
+    border-right: 1px solid #d6dfd7
+}
+html[data-theme="light"] .day-column.current-day {
+    background: hsl(202 43% 95%)
+}
+html[data-theme="light"] .hour-rule {
+    border-top: 1px solid #d6dfd7
+}
+html[data-theme="light"] .now-line {
+    border-top: 1px solid hsl(220 48% 54%)
+}
+html[data-theme="light"] .now-line>span {
+    background: hsl(220 43% 80%)
+}
+html[data-theme="light"] .calendar-legend {
+    color: #46564e
+}
+html[data-theme="light"] .legend-lecture {
+    background: hsl(13 63% 80%)
+}
+html[data-theme="light"] .legend-exercise {
+    background: hsl(210 43% 80%)
+}
+html[data-theme="light"] .legend-practical {
+    background: hsl(67 43% 80%)
+}
+html[data-theme="light"] .legend-language {
+    background: hsl(322 43% 80%)
+}
+html[data-theme="light"] .legend-tip {
+    color: #46564e
+}
+html[data-theme="light"] .right-rail>section {
+    border-bottom: 1px solid #d6dfd7
+}
+html[data-theme="light"] .deadline-row {
+    border-bottom: 1px solid #d6dfd7
+}
+html[data-theme="light"] .deadline-date {
+    color: #203029
+}
+html[data-theme="light"] .deadline-row small {
+    color: #46564e
+}
+html[data-theme="light"] .deadline-row small.overdue, html[data-theme="light"] .overdue {
+    color: hsl(11 47% 33%)
+}
+html[data-theme="light"] .revisit-row {
+    color: #203029
+}
+html[data-theme="light"] .revisit-row>svg:first-child {
+    color: #46564e
+}
+html[data-theme="light"] .russian-quick svg {
+    color: hsl(324 35% 33%)
+}
+html[data-theme="light"] .week-summary {
+    color: #46564e
+}
+html[data-theme="light"] .app-footer {
+    border-top: 1px solid #d6dfd7;
+    color: #46564e
+}
+html[data-theme="light"] .subject-summary>span {
+    color: #46564e
+}
+html[data-theme="light"] .search {
+    background: hsl(200 43% 95%);
+    color: #46564e
+}
+html[data-theme="light"] .task-table th {
+    border-bottom: 1px solid #d6dfd7
+}
+html[data-theme="light"] .status.not-started {
+    color: hsl(14 40% 33%);
+    border-color: hsl(11 26% 75%);
+    background: hsl(11 63% 91%)
+}
+html[data-theme="light"] .status.in-progress {
+    color: hsl(42 46% 33%);
+    background: hsl(44 63% 91%);
+    border-color: hsl(39 26% 75%)
+}
+html[data-theme="light"] .status.done {
+    color: hsl(141 35% 33%);
+    background: hsl(150 43% 95%);
+    border-color: hsl(144 26% 75%)
+}
+html[data-theme="light"] .compact {
+    border-color: #d6dfd7
+}
+html[data-theme="light"] .compact>button {
+    color: #46564e
+}
+html[data-theme="light"] .file-chip {
+    border: 1px solid #d6dfd7
+}
+html[data-theme="light"] label {
+    color: #46564e
+}
+html[data-theme="light"] .empty {
+    color: #46564e
+}
+html[data-theme="light"] .empty svg {
+    color: #46564e
+}
+html[data-theme="light"] .empty h3 {
+    color: #203029
+}
+html[data-theme="light"] .library-drop {
+    border: 1px dashed #bfcfc2;
+    background: #f1f5f0
+}
+html[data-theme="light"] .library-drop>svg {
+    color: hsl(140 35% 33%)
+}
+html[data-theme="light"] .library-drop p {
+    color: #46564e
+}
+html[data-theme="light"] .library-file>svg {
+    color: hsl(144 35% 33%)
+}
+html[data-theme="light"] .library-file span {
+    color: #46564e
+}
+html[data-theme="light"] .study-log svg {
+    color: hsl(148 35% 33%)
+}
+html[data-theme="light"] .settings-section .note {
+    background: #f1f5f0;
+    color: #203029
+}
+html[data-theme="light"] summary {
+    color: hsl(144 35% 33%)
+}
+html[data-theme="light"] .error-banner {
+    border: 1px solid hsl(9 26% 65%);
+    background: hsl(7 63% 91%);
+    color: hsl(14 54% 33%)
+}
+html[data-theme="light"] .toast {
+    background: hsl(145 43% 80%)
+}
+html[data-theme="light"] .loading-screen {
+    color: #46564e
+}
+html[data-theme="light"] .online-task {
+    color: #46564e
+}
+html[data-theme="light"] .online-task small {
+    color: #46564e
+}
+html[data-theme="light"] .course-counts {
+    color: #46564e
+}
+html[data-theme="light"] .course-popup {
+    border: 1px solid #d6dfd7
+}
+html[data-theme="light"] .progress-option.not-started {
+    color: hsl(14 40% 33%)
+}
+html[data-theme="light"] .progress-option.in-progress {
+    color: hsl(42 46% 33%)
+}
+html[data-theme="light"] .progress-option.done {
+    color: hsl(141 35% 33%)
+}
+html[data-theme="light"] .button.primary {
+    background: hsl(152 43% 80%);
+    border-color: hsl(152 35% 54%)
+}
+html[data-theme="light"] nav button.active, html[data-theme="light"] .sidebar-bottom>button.active {
+    background: hsl(160 43% 95%);
+    color: hsl(153 46% 33%)
+}
+html[data-theme="light"] .text-button {
+    color: hsl(153 42% 33%)
+}
+html[data-theme="light"] .count {
+    background: hsl(159 43% 91%);
+    color: hsl(151 46% 33%)
+}
+html[data-theme="light"] .segmented>button.selected {
+    background: hsl(202 43% 91%);
+    color: hsl(210 62% 33%)
+}
+html[data-theme="light"] .inbox-strip {
+    background: hsl(153 43% 95%);
+    border-color: hsl(149 26% 75%)
+}
+html[data-theme="light"] .inbox-title {
+    color: hsl(136 35% 33%)
+}
+html[data-theme="light"] .status.not-started {
+    background: hsl(355 63% 91%);
+    border-color: hsl(354 26% 75%);
+    color: hsl(10 62% 33%)
+}
+html[data-theme="light"] .status.in-progress {
+    background: hsl(44 63% 95%);
+    border-color: hsl(45 26% 75%);
+    color: hsl(43 62% 33%)
+}
+html[data-theme="light"] .status.done {
+    background: hsl(158 43% 95%);
+    border-color: hsl(154 26% 75%);
+    color: hsl(144 39% 33%)
+}
+html[data-theme="light"] .progress-option.not-started {
+    color: hsl(10 62% 33%)
+}
+html[data-theme="light"] .progress-option.in-progress {
+    color: hsl(43 62% 33%)
+}
+html[data-theme="light"] .progress-option.done {
+    color: hsl(144 39% 33%)
+}
+html[data-theme="light"] .is-today .date-weekday {
+    color: hsl(213 62% 33%)
+}
+html[data-theme="light"] .day-column {
+    border-color: #d6dfd7
+}
+html[data-theme="light"] .day-column:last-child {
+    border-color: #d6dfd7
+}
+html[data-theme="light"] .day-column.current-day {
+    background: hsl(212 43% 95%)
+}
+html[data-theme="light"] .hour-rule {
+    border-color: #d6dfd7
+}
+html[data-theme="light"] .now-line {
+    border-color: hsl(214 48% 54%)
+}
+html[data-theme="light"] .now-line>span {
+    background: hsl(214 43% 80%)
+}
+html[data-theme="light"] .tone-lecture, html[data-theme="light"] .tone-analysis {
+    --event-bg: hsl(346 63% 91%);
+    --event-line: hsl(344 26% 75%);
+    --event-ink: hsl(352 62% 33%);
+    --event-secondary: hsl(348 46% 33%);
+    --event-accent: hsl(9 48% 54%)
+}
+html[data-theme="light"] .tone-exercise, html[data-theme="light"] .tone-spca {
+    --event-bg: hsl(206 43% 91%);
+    --event-line: hsl(206 30% 75%);
+    --event-ink: hsl(207 62% 33%);
+    --event-secondary: hsl(205 55% 33%);
+    --event-accent: hsl(210 48% 54%)
+}
+html[data-theme="light"] .tone-hodl {
+    --event-bg: hsl(80 43% 95%);
+    --event-line: hsl(80 26% 75%);
+    --event-ink: hsl(72 49% 33%);
+    --event-secondary: hsl(75 35% 33%);
+    --event-accent: hsl(71 36% 54%)
+}
+html[data-theme="light"] .tone-russian {
+    --event-bg: hsl(289 43% 91%);
+    --event-line: hsl(290 26% 75%);
+    --event-ink: hsl(290 62% 33%);
+    --event-secondary: hsl(291 39% 33%);
+    --event-accent: hsl(322 43% 54%)
+}
+html[data-theme="light"] .tone-theory {
+    --event-bg: hsl(250 43% 91%);
+    --event-line: hsl(251 26% 65%);
+    --event-ink: hsl(258 62% 33%);
+    --event-secondary: hsl(256 42% 33%);
+    --event-accent: hsl(251 48% 54%)
+}
+html[data-theme="light"] .tone-numerical {
+    --event-bg: hsl(161 43% 95%);
+    --event-line: hsl(155 26% 75%);
+    --event-ink: hsl(146 49% 33%);
+    --event-secondary: hsl(151 35% 33%);
+    --event-accent: hsl(156 34% 54%)
+}
+html[data-theme="light"] .calendar-legend .legend-lecture {
+    background: hsl(9 63% 80%)
+}
+html[data-theme="light"] .calendar-legend .legend-exercise {
+    background: hsl(210 43% 80%)
+}
+html[data-theme="light"] .calendar-legend .legend-practical {
+    background: hsl(71 43% 80%)
+}
+html[data-theme="light"] .calendar-legend .legend-language {
+    background: hsl(322 43% 80%)
+}
+html[data-theme="light"] .agenda-day-picker>button.selected {
+    background: hsl(209 43% 95%);
+    border-color: hsl(211 26% 75%)
+}
+html[data-theme="light"] .month-weekdays {
+    background: #f8faf7
+}
+html[data-theme="light"] .outside-month>.date-marker {
+    color: #5d6d64
+}
+html[data-theme="light"] .outside-month {
+    background: hsl(206 43% 95%)
+}
+html[data-theme="light"] .current-date {
+    background: hsl(212 43% 95%)
+}
+html[data-theme="light"] .assignment-filters>summary {
+    border: 1px solid #d6dfd7;
+    background: #f1f5f0;
+    color: #203029
+}
+html[data-theme="light"] .assignment-filters>summary:hover, html[data-theme="light"] .assignment-filters[open]>summary {
+    background: #e7eee8
+}
+html[data-theme="light"] .filter-count {
+    background: hsl(158 43% 91%);
+    color: hsl(150 43% 33%)
+}
+html[data-theme="light"] .assignment-filter-panel {
+    border: 1px solid #d6dfd7
+}
+html[data-theme="light"] .assignment-filter-panel label {
+    color: #46564e
+}
+html[data-theme="light"] .filter-label {
+    color: #46564e
+}
+html[data-theme="light"] .filter-status>button>span {
+    color: #46564e
+}
+html[data-theme="light"] .more-assignments {
+    color: hsl(152 35% 33%)
+}
+html[data-theme="light"] .day-assignments-dialog {
+    border: 1px solid #d6dfd7
+}
+html[data-theme="light"] .assignment-dialog {
+    border: 1px solid #d6dfd7
+}
+html[data-theme="light"] .assignment-due {
+    color: #203029
+}
+html[data-theme="light"] .moodle-section-link {
+    border: 1px solid hsl(155 26% 75%);
+    color: hsl(145 35% 33%);
+    background: hsl(150 43% 95%)
+}
+html[data-theme="light"] .moodle-section-link:hover {
+    border-color: hsl(140 26% 65%);
+    background: hsl(151 43% 91%);
+    color: hsl(138 42% 33%)
+}
+html[data-theme="light"] .task-external-link {
+    color: hsl(148 35% 33%)
+}
+html[data-theme="light"] .task-external-link:hover {
+    color: hsl(145 42% 33%)
+}
+html[data-theme="light"] .optional-attachment-body>p {
+    color: #46564e
+}
+html[data-theme="light"] .assignment-more>summary {
+    color: #203029
+}
+html[data-theme="light"] .assignment-notes {
+    color: #203029
+}
+html[data-theme="light"] .assignment-exercises {
+    color: #203029
+}
+html[data-theme="light"] .assignment-files-heading h3 {
+    color: #203029
+}
+html[data-theme="light"] .assignment-file {
+    border: 1px solid #d6dfd7;
+    background: #f1f5f0;
+    color: hsl(141 35% 33%)
+}
+html[data-theme="light"] .assignment-file:hover {
+    background: #f1f5f0;
+    border-color: #bfcfc2
+}
+html[data-theme="light"] .assignment-file>svg {
+    color: hsl(145 35% 33%)
+}
+html[data-theme="light"] .assignment-file-action {
+    color: hsl(144 35% 33%)
+}
+html[data-theme="light"] .library-file-open:hover strong {
+    color: hsl(144 35% 33%)
+}
+html[data-theme="light"] .library-file-open span {
+    color: #46564e
+}
+html[data-theme="light"] .file-preview-dialog {
+    border: 1px solid #d6dfd7
+}
+html[data-theme="light"] .file-preview-header>svg {
+    color: hsl(145 35% 33%)
+}
+html[data-theme="light"] .file-preview-content {
+    background: hsl(195 43% 95%)
+}
+html[data-theme="light"] .file-preview-content pre {
+    color: hsl(145 35% 33%)
+}
+html[data-theme="light"] .file-preview-empty {
+    color: #203029
+}
+html[data-theme="light"] .file-preview-empty svg {
+    color: hsl(145 35% 33%)
+}
+html[data-theme="light"] .library-drop {
+    border-color: #d6dfd7;
+    background: hsl(147 43% 95%)
+}
+html[data-theme="light"] .library-drop>svg {
+    color: hsl(144 35% 33%)
+}
+html[data-theme="light"] .library-drop p {
+    color: hsl(138 35% 33%)
+}
+html[data-theme="light"] .library-empty>svg {
+    color: #46564e
+}
+html[data-theme="light"] .library-empty h3 {
+    color: #203029
+}
+html[data-theme="light"] .repeat-trigger {
+    color: #203029
+}
+html[data-theme="light"] .repeat-trigger:hover {
+    background: #f1f5f0
+}
+html[data-theme="light"] .repeat-menu {
+    border: 1px solid #d6dfd7
+}
+html[data-theme="light"] .repeat-option {
+    color: #203029
+}
+html[data-theme="light"] .repeat-option.highlighted, html[data-theme="light"] .repeat-option:hover {
+    background: hsl(158 43% 95%);
+    color: hsl(141 35% 33%)
+}
+html[data-theme="light"] .repeat-week-picker {
+    border: 1px solid #d6dfd7
+}
+html[data-theme="light"] .repeat-week-days button {
+    color: #203029
+}
+html[data-theme="light"] .repeat-week-days button.selected {
+    background: hsl(160 43% 95%);
+    color: hsl(153 46% 33%)
+}
+html[data-theme="light"] .plan-heading p {
+    color: #46564e
+}
+html[data-theme="light"] .plan-week-switch {
+    border: 1px solid #d6dfd7;
+    background: #f1f5f0
+}
+html[data-theme="light"] .plan-week-switch button {
+    color: #46564e
+}
+html[data-theme="light"] .plan-week-switch button.active {
+    background: hsl(155 43% 91%);
+    color: hsl(145 49% 33%)
+}
+html[data-theme="light"] .plan-calendar, html[data-theme="light"] .plan-queue {
+    border: 1px solid #d6dfd7;
+    background: #f8faf7
+}
+html[data-theme="light"] .plan-calendar-head {
+    border-bottom: 1px solid #d6dfd7
+}
+html[data-theme="light"] .plan-calendar-head>div>span {
+    color: #46564e
+}
+html[data-theme="light"] .plan-key {
+    color: #46564e
+}
+html[data-theme="light"] .plan-key i {
+    background: #dce8df
+}
+html[data-theme="light"] .plan-key i:nth-of-type(2) {
+    background: hsl(154 43% 80%)
+}
+html[data-theme="light"] .plan-timeline-scroll {
+    scrollbar-color: #bfcfc2 #d6dfd7
+}
+html[data-theme="light"] .plan-time-head, html[data-theme="light"] .plan-day-head {
+    background: #f1f5f0;
+    border-bottom: 1px solid #d6dfd7
+}
+html[data-theme="light"] .plan-time-head {
+    border-right: 1px solid #d6dfd7
+}
+html[data-theme="light"] .plan-day-head {
+    border-right: 1px solid #d6dfd7
+}
+html[data-theme="light"] .plan-day-head.is-today {
+    color: hsl(212 62% 33%);
+    background: hsl(201 43% 95%)
+}
+html[data-theme="light"] .plan-day-head strong {
+    color: hsl(30 46% 33%)
+}
+html[data-theme="light"] .plan-day-head small {
+    color: #46564e
+}
+html[data-theme="light"] .plan-time-ruler {
+    background: #f1f5f0;
+    border-right: 1px solid #d6dfd7
+}
+html[data-theme="light"] .plan-time-ruler>span {
+    color: #46564e
+}
+html[data-theme="light"] .plan-day-lane {
+    border-right: 1px solid #d6dfd7
+}
+html[data-theme="light"] .plan-day-lane.is-placing {
+    background: hsl(166 43% 95%)
+}
+html[data-theme="light"] .plan-day-lane:focus-visible {
+    outline: 2px solid hsl(215 48% 54%)
+}
+html[data-theme="light"] .plan-hour-line {
+    background: #e7eee8
+}
+html[data-theme="light"] .plan-hour-line:nth-of-type(2n) {
+    background: #f1f5f0
+}
+html[data-theme="light"] .plan-class {
+    background: #f1f5f0;
+    border: 1px solid #d6dfd7;
+    border-top-color: color-mix(in srgb,var(--class-color) 22%,#d6dfd7);
+    color: #46564e
+}
+html[data-theme="light"] .plan-class strong {
+    color: #203029
+}
+html[data-theme="light"] .plan-class small {
+    color: #46564e
+}
+html[data-theme="light"] .plan-block {
+    background: color-mix(in srgb,var(--block-color) 25%,#f1f5f0);
+    border: 1px solid color-mix(in srgb,var(--block-color) 75%,hsl(167 26% 75%));
+    color: hsl(146 35% 33%)
+}
+html[data-theme="light"] .plan-block:focus-visible {
+    outline: 2px solid hsl(151 41% 54%)
+}
+html[data-theme="light"] .plan-block-top button {
+    color: hsl(160 35% 33%)
+}
+html[data-theme="light"] .plan-block>small {
+    color: hsl(152 35% 33%)
+}
+html[data-theme="light"] .plan-resize {
+    color: hsl(151 35% 33%)
+}
+html[data-theme="light"] .plan-preview {
+    border: 1px solid hsl(144 39% 54%);
+    color: hsl(143 62% 33%)
+}
+html[data-theme="light"] .plan-preview.is-invalid {
+    border-color: hsl(1 45% 54%);
+    color: hsl(7 62% 33%)
+}
+html[data-theme="light"] .plan-queue-head {
+    border-bottom: 1px solid #d6dfd7
+}
+html[data-theme="light"] .plan-queue-head p {
+    color: #46564e
+}
+html[data-theme="light"] .plan-queue-head svg {
+    color: hsl(151 35% 39%)
+}
+html[data-theme="light"] .plan-queue-list {
+    scrollbar-color: #bfcfc2 #d6dfd7
+}
+html[data-theme="light"] .plan-queue-item {
+    border-bottom: 1px solid #d6dfd7
+}
+html[data-theme="light"] .plan-queue-item:hover, html[data-theme="light"] .plan-queue-item.is-selected {
+    background: hsl(157 43% 95%)
+}
+html[data-theme="light"] .plan-queue-subject button {
+    color: #203029
+}
+html[data-theme="light"] .plan-queue-subject button:hover {
+    color: hsl(145 62% 33%)
+}
+html[data-theme="light"] .plan-queue-bottom {
+    color: #203029
+}
+html[data-theme="light"] .plan-queue-bottom .is-overdue {
+    color: hsl(10 55% 33%)
+}
+html[data-theme="light"] .plan-queue-bottom small {
+    color: hsl(149 35% 33%)
+}
+html[data-theme="light"] .plan-queue-empty {
+    color: hsl(146 35% 33%)
+}
+html[data-theme="light"] .plan-queue-empty p {
+    color: #46564e
+}
+html[data-theme="light"] .plan-selection {
+    background: hsl(151 43% 95%);
+    color: hsl(145 50% 33%)
+}
+html[data-theme="light"] .plan-selection button {
+    color: hsl(140 35% 33%)
+}
+html[data-theme="light"] .plan-notice {
+    background: hsl(162 43% 95%);
+    border: 1px solid hsl(154 26% 65%);
+    color: hsl(148 41% 33%)
+}
+@media (max-width:1250px) {
+    html[data-theme="light"] .plan-queue-item {
+        border-right: 1px solid #d6dfd7
+    }
+}
+@media (max-width:760px) {
+    html[data-theme="light"] .plan-mobile-days {
+        border-bottom: 1px solid #d6dfd7;
+        background: #f1f5f0
+    }
+    html[data-theme="light"] .plan-mobile-days button {
+        color: #46564e
+    }
+    html[data-theme="light"] .plan-mobile-days button strong {
+        color: #203029
+    }
+    html[data-theme="light"] .plan-mobile-days button.active {
+        background: hsl(151 43% 91%);
+        color: hsl(146 47% 33%)
+    }
+    html[data-theme="light"] .plan-mobile-days button.active strong {
+        color: hsl(136 62% 33%)
+    }
+    html[data-theme="light"] .plan-mobile-days button i {
+        background: hsl(30 63% 80%)
+    }
+}
+html[data-theme="light"] .plan-queue-item:focus-visible {
+    outline: 2px solid hsl(215 48% 54%)
+}
+html[data-theme="light"] .date-field-label {
+    color: #46564e
+}
+html[data-theme="light"] .date-picker {
+    border: 1px solid #d6dfd7
+}
+html[data-theme="light"] .date-picker-days>button.other-month {
+    color: #46564e
+}
+html[data-theme="light"] .date-picker-days>button.selected {
+    background: hsl(160 43% 95%);
+    color: hsl(153 46% 33%)
+}
+html[data-theme="light"] .cloud-gate {
+    background: radial-gradient(ellipse at 50% 5%,hsl(163 43% 95%) 0,transparent 44%),var(--bg)
+}
+html[data-theme="light"] .cloud-gate-card {
+    background: #f8faf7;
+    border: 1px solid #d6dfd7
+}
+html[data-theme="light"] .cloud-gate-brand {
+    color: hsl(138 35% 33%)
+}
+html[data-theme="light"] .cloud-gate-brand b {
+    color: #46564e
+}
+html[data-theme="light"] .cloud-gate-symbol {
+    color: hsl(158 35% 33%);
+    background: hsl(157 43% 95%);
+    border: 1px solid hsl(144 26% 75%)
+}
+html[data-theme="light"] .cloud-gate-card>p {
+    color: #46564e
+}
+html[data-theme="light"] .cloud-gate-divider {
+    color: #46564e
+}
+html[data-theme="light"] .cloud-gate-divider:before, html[data-theme="light"] .cloud-gate-divider:after {
+    background: #e7eee8
+}
+html[data-theme="light"] .cloud-gate-form label {
+    color: #203029
+}
+html[data-theme="light"] .cloud-gate-inline input {
+    background: #f8faf7
+}
+html[data-theme="light"] .cloud-gate-card .cloud-gate-note {
+    color: hsl(143 35% 33%)
+}
+html[data-theme="light"] .cloud-gate-card .cloud-gate-error {
+    color: hsl(10 54% 33%);
+    background: hsl(3 63% 95%);
+    border: 1px solid hsl(6 26% 75%)
+}
+html[data-theme="light"] .cloud-gate-qr {
+    background: #f8faf7;
+    border: 1px solid #d6dfd7
+}
+html[data-theme="light"] .cloud-gate-qr img {
+    background: #dce8df
+}
+html[data-theme="light"] .cloud-migration .cloud-migration-help {
+    color: #46564e
+}
+html[data-theme="light"] .calendar-event.unattended-event {
+    --event-bg: #f1f5f0;
+    --event-line: #bfcfc2;
+    --event-ink: #203029;
+    --event-secondary: #46564e;
+    --event-accent: #8da997;
+    border-color: #d6dfd7
+}
+html[data-theme="light"] .attendance-toggle {
+    color: hsl(146 35% 33%);
+    background: hsl(171 43% 95%);
+    border: 1px solid #d6dfd7
+}
+html[data-theme="light"] .attendance-toggle:hover {
+    background: hsl(162 43% 95%);
+    border-color: #bfcfc2
+}
+html[data-theme="light"] .attendance-toggle>svg:first-child {
+    color: hsl(145 35% 33%)
+}
+html[data-theme="light"] .attendance-toggle small {
+    color: #46564e
+}
+html[data-theme="light"] .attendance-toggle.is-unattended {
+    background: #f1f5f0;
+    border-color: #bfcfc2
+}
+html[data-theme="light"] .attendance-toggle.is-unattended>svg:first-child {
+    color: #46564e
+}
+html[data-theme="light"] .attendance-check {
+    color: hsl(144 35% 33%)
+}
+html[data-theme="light"] .right-rail>.rail-inbox {
+    border: 1px solid hsl(141 26% 75%)
+}
+html[data-theme="light"] .plan-block.is-condensed .plan-block-time {
+    color: hsl(142 35% 33%)
+}
+html[data-theme="light"] .plan-queue-item.is-planned {
+    background: hsl(150 43% 95%)
+}
+html[data-theme="light"] .plan-queue-item.is-planned:hover, html[data-theme="light"] .plan-queue-item.is-planned.is-selected {
+    background: hsl(147 43% 91%)
+}
+html[data-theme="light"] .plan-queue-badge {
+    background: hsl(146 43% 91%);
+    color: hsl(141 50% 33%)
+}
+@media (min-width:1051px) and (max-width:1250px) {
+    html[data-theme="light"] .plan-queue-item {
+        border-bottom: 1px solid #d6dfd7
+    }
+}
+@media (max-width:760px) {
+    html[data-theme="light"] .plan-queue-item {
+        border-right: 1px solid #d6dfd7
+    }
+}
+html[data-theme="light"] .plan-due-trigger {
+    color: hsl(30 46% 33%)
+}
+html[data-theme="light"] .plan-due-trigger:hover, html[data-theme="light"] .plan-due-trigger:focus-visible, html[data-theme="light"] .plan-day-head.due-open .plan-due-trigger {
+    color: hsl(43 62% 33%)
+}
+html[data-theme="light"] .plan-due-item time {
+    color: hsl(43 62% 33%)
+}
+html[data-theme="light"] .right-rail>.revisit-panel {
+    border: 1px solid #bfcfc2;
+    background: hsl(148 43% 95%)
+}
+html[data-theme="light"] .revisit-heading>svg {
+    color: hsl(137 35% 33%)
+}
+html[data-theme="light"] .revisit-heading h2 {
+    color: hsl(131 35% 33%)
+}
+html[data-theme="light"] .revisit-heading p {
+    color: hsl(137 35% 33%)
+}
+html[data-theme="light"] .revisit-count {
+    background: hsl(142 43% 91%);
+    color: hsl(124 39% 33%)
+}
+html[data-theme="light"] .revisit-panel-row {
+    border-top: 1px solid hsl(136 26% 75%)
+}
+html[data-theme="light"] .revisit-panel-label {
+    color: hsl(129 35% 33%)
+}
+html[data-theme="light"] .revisit-empty {
+    border-top: 1px solid hsl(136 26% 75%);
+    color: hsl(134 35% 33%)
+}
+html[data-theme="light"] .activity-russian {
+    color: hsl(310 35% 33%);
+    border-color: hsl(302 26% 75%);
+    background: #e7eee8
+}
+html[data-theme="light"] .activity-russian:hover {
+    background: #e7eee8
+}
+html[data-theme="light"] .activity-toolbar p {
+    color: #46564e
+}
+html[data-theme="light"] .activity-calendar {
+    border: 1px solid #d6dfd7;
+    background: #f8faf7
+}
+html[data-theme="light"] .activity-weekdays {
+    border-bottom: 1px solid #d6dfd7;
+    background: #f1f5f0
+}
+html[data-theme="light"] .activity-weekdays span {
+    color: #46564e
+}
+html[data-theme="light"] .activity-day {
+    border-right: 1px solid #d6dfd7;
+    border-bottom: 1px solid #d6dfd7;
+    color: hsl(142 35% 33%)
+}
+html[data-theme="light"] .activity-day:hover {
+    background: #f1f5f0
+}
+html[data-theme="light"] .activity-day.outside {
+    color: #46564e;
+    background: #f8faf7
+}
+html[data-theme="light"] .activity-day.today>span:first-child {
+    color: hsl(153 35% 33%)
+}
+html[data-theme="light"] .activity-day.selected {
+    background: hsl(151 43% 91%)
+}
+html[data-theme="light"] .activity-dot, html[data-theme="light"] .activity-entry-mark {
+    background: #dce8df
+}
+html[data-theme="light"] .activity-dot.started, html[data-theme="light"] .activity-entry-mark.started {
+    background: hsl(42 63% 80%)
+}
+html[data-theme="light"] .activity-dot.finished, html[data-theme="light"] .activity-entry-mark.finished {
+    background: hsl(142 43% 80%)
+}
+html[data-theme="light"] .activity-dot.russian, html[data-theme="light"] .activity-entry-mark.russian {
+    background: hsl(303 43% 80%)
+}
+html[data-theme="light"] .activity-dot.revised, html[data-theme="light"] .activity-entry-mark.revised {
+    background: hsl(217 43% 80%)
+}
+html[data-theme="light"] .activity-day small {
+    color: #203029
+}
+html[data-theme="light"] .activity-day-head {
+    border-bottom: 1px solid #d6dfd7
+}
+html[data-theme="light"] .activity-day-head>span {
+    color: #46564e
+}
+html[data-theme="light"] .activity-entry {
+    border-bottom: 1px solid #d6dfd7
+}
+html[data-theme="light"] .activity-entry div span {
+    color: #46564e
+}
+html[data-theme="light"] .activity-no-events {
+    color: #46564e
+}
+html[data-theme="light"] .activity-queue {
+    border: 1px solid #d6dfd7;
+    background: #f1f5f0
+}
+html[data-theme="light"] .activity-queue-head span {
+    color: #46564e
+}
+html[data-theme="light"] .activity-queue-intro {
+    color: #46564e
+}
+html[data-theme="light"] .activity-queue-item {
+    border-top: 1px solid #d6dfd7
+}
+html[data-theme="light"] .activity-queue-subject {
+    color: #203029
+}
+html[data-theme="light"] .activity-queue-title {
+    color: #203029
+}
+html[data-theme="light"] .activity-queue-foot>span {
+    color: #46564e
+}
+html[data-theme="light"] .russian-quick .button {
+    color: hsl(314 35% 33%);
+    background: #e7eee8;
+    border-color: #bfcfc2
+}
+html[data-theme="light"] .sidebar>nav:first-of-type button:nth-child(n+4):not(.active) {
+    color: #46564e
+}
+html[data-theme="light"] .calendar-overdue-count {
+    color: hsl(9 56% 33%)
+}
+html[data-theme="light"] .assignment-event, html[data-theme="light"] .viewport-calendar .assignment-event, html[data-theme="light"] .viewport-calendar.six-week-month .assignment-event {
+    background: #f1f5f0;
+    border: 1px solid #d6dfd7;
+    color: hsl(129 35% 33%)
+}
+html[data-theme="light"] .assignment-event:hover, html[data-theme="light"] .viewport-calendar .assignment-event:hover {
+    background: #e7eee8;
+    border-color: #bfcfc2
+}
+html[data-theme="light"] .assignment-event.is-overdue {
+    background: hsl(11 63% 95%);
+    border-color: hsl(9 26% 65%);
+    color: hsl(12 62% 33%)
+}
+html[data-theme="light"] .assignment-event.is-overdue:hover {
+    background: hsl(10 63% 91%)
+}
+html[data-theme="light"] .assignment-subject-name {
+    color: #203029
+}
+html[data-theme="light"] .assignment-event-time {
+    color: hsl(138 35% 33%)
+}
+html[data-theme="light"] .assignment-overdue {
+    color: hsl(9 62% 33%)
+}
+html[data-theme="light"] .assignment-done {
+    color: hsl(135 35% 33%)
+}
+@media (max-width:760px) {
+    html[data-theme="light"] .sidebar>nav:first-of-type button:nth-last-child(-n+2):not(.active) {
+        color: #46564e
+    }
+}
+html[data-theme="light"] .activity-month-nav .button {
+    color: #203029
+}
+html[data-theme="light"] .activity-jump-today {
+    background: hsl(151 43% 91%);
+    border-color: hsl(143 26% 65%);
+    color: hsl(129 35% 33%)
+}
+html[data-theme="light"] .activity-day.today {
+    background: hsl(209 43% 95%)
+}
+html[data-theme="light"] .activity-day.today.selected {
+    background: hsl(151 43% 91%)
+}
+html[data-theme="light"] .activity-day.today .activity-date-number {
+    color: hsl(207 62% 33%)
+}
+html[data-theme="light"] .activity-today-label {
+    background: hsl(208 43% 91%);
+    color: hsl(207 62% 33%)
+}
+html[data-theme="light"] .activity-editor {
+    border: 1px solid #bfcfc2;
+    background: hsl(148 43% 95%)
+}
+html[data-theme="light"] .activity-editor-head p {
+    color: #203029
+}
+html[data-theme="light"] .activity-editor label {
+    color: hsl(125 35% 33%)
+}
+html[data-theme="light"] .activity-editor select, html[data-theme="light"] .activity-editor input {
+    background: hsl(147 43% 95%);
+    color: hsl(110 35% 33%)
+}
+html[data-theme="light"] .activity-editor-error {
+    color: hsl(10 62% 33%)
+}
+html[data-theme="light"] .activity-stats {
+    border-top: 1px solid #d6dfd7
+}
+html[data-theme="light"] .activity-stats p {
+    color: #46564e
+}
+html[data-theme="light"] .activity-stats strong {
+    color: hsl(135 35% 33%)
+}
+html[data-theme="light"] .study-stats-list {
+    border-top: 1px solid #d6dfd7
+}
+html[data-theme="light"] .study-stats-list>div {
+    border-bottom: 1px solid #d6dfd7;
+    color: #203029
+}
+html[data-theme="light"] .study-stats-list strong {
+    color: hsl(130 35% 33%)
+}
+html[data-theme="light"] .study-stats-note {
+    color: #46564e
+}
+html[data-theme="light"] .workspace-back {
+    color: hsl(144 35% 33%)
+}
+html[data-theme="light"] .workspace-back:hover {
+    color: hsl(140 37% 33%)
+}
+html[data-theme="light"] .course-popup .popup-session {
+    color: #46564e
+}
+html[data-theme="light"] .popup-quick-actions .button {
+    background: hsl(148 43% 95%);
+    border-color: hsl(140 26% 65%);
+    color: hsl(131 35% 33%)
+}
+html[data-theme="light"] .popup-quick-actions .button:disabled {
+    background: #f1f5f0;
+    color: hsl(134 35% 33%);
+    border-color: hsl(135 26% 75%)
+}
+html[data-theme="light"] .course-popup-files .assignment-files-heading h3 {
+    color: hsl(138 35% 33%)
+}
+html[data-theme="light"] .course-popup .course-files-empty {
+    color: #46564e
+}
+html[data-theme="light"] .course-popup .professor-line {
+    color: hsl(135 35% 33%)
+}
+html[data-theme="light"] .course-popup .professor-line>span {
+    color: #46564e
+}
+html[data-theme="light"] .popup-footer {
+    border-top: 1px solid #d6dfd7
+}
+html[data-theme="light"] .popup-open-subject {
+    background: hsl(150 43% 80%);
+    border-color: hsl(150 26% 54%)
+}
+html[data-theme="light"] .popup-open-subject:hover:not(:disabled) {
+    background: hsl(141 43% 80%)
+}
+html[data-theme="light"] .attendance-quiet {
+    color: #46564e
+}
+html[data-theme="light"] .attendance-quiet:hover {
+    color: hsl(139 35% 33%)
+}
+html[data-theme="light"] .attendance-quiet.is-unattended {
+    color: hsl(104 35% 33%)
+}
+html[data-theme="light"] .attendance-error {
+    color: hsl(10 52% 33%)
+}
+html[data-theme="light"] .plan-class:hover {
+    background: #e7eee8
+}
+html[data-theme="light"] .plan-quick-task {
+    border-bottom: 1px solid #d6dfd7;
+    background: #f1f5f0
+}
+html[data-theme="light"] .plan-quick-task label {
+    color: hsl(145 35% 33%)
+}
+html[data-theme="light"] .plan-edit-sheet {
+    border: 1px solid #bfcfc2;
+    background: #f1f5f0
+}
+html[data-theme="light"] .plan-edit-heading span {
+    color: #46564e
+}
+html[data-theme="light"] .plan-edit-time {
+    color: hsl(135 35% 33%)
+}
+html[data-theme="light"] .plan-edit-control {
+    border-top: 1px solid #d6dfd7
+}
+html[data-theme="light"] .plan-edit-control>span {
+    color: #46564e
+}
+html[data-theme="light"] .plan-edit-actions {
+    border-top: 1px solid #d6dfd7
+}
+html[data-theme="light"] .plan-edit-remove {
+    color: hsl(10 52% 33%)
+}
+html[data-theme="light"] .plan-edit-fields label {
+    color: #46564e
+}
+html[data-theme="light"] .plan-edit-error {
+    color: hsl(10 52% 33%)
+}
+html[data-theme="light"] .personal-delete {
+    color: hsl(10 52% 33%)
+}
+html[data-theme="light"] .home-overdue>summary, html[data-theme="light"] .subject-overdue>summary, html[data-theme="light"] .activity-overdue>summary {
+    color: hsl(9 47% 33%)
+}
+html[data-theme="light"] .home-overdue-item {
+    border-top: 1px solid #d6dfd7
+}
+html[data-theme="light"] .home-overdue-item small {
+    color: hsl(9 47% 33%)
+}
+html[data-theme="light"] .subject-hub-work, html[data-theme="light"] .subject-hub-resources>section {
+    border: 1px solid #d6dfd7;
+    background: #f8faf7
+}
+html[data-theme="light"] .subject-hub-task {
+    border-top: 1px solid #d6dfd7
+}
+html[data-theme="light"] .subject-hub-task:hover, html[data-theme="light"] .subject-hub-file-list button:hover {
+    color: hsl(141 38% 33%)
+}
+html[data-theme="light"] .subject-hub-task small {
+    color: #46564e
+}
+html[data-theme="light"] .subject-hub-task svg {
+    color: hsl(143 35% 39%)
+}
+html[data-theme="light"] .subject-overdue {
+    border-top: 1px solid #d6dfd7
+}
+html[data-theme="light"] .subject-hub-file-list button {
+    border-top: 1px solid #d6dfd7
+}
+html[data-theme="light"] .subject-hub-file-list svg {
+    color: hsl(144 35% 33%)
+}
+html[data-theme="light"] .assignment-lifecycle {
+    border: 1px solid #bfcfc2;
+    background: hsl(141 43% 95%)
+}
+html[data-theme="light"] .assignment-lifecycle span {
+    color: hsl(132 35% 33%)
+}
+html[data-theme="light"] .assignment-lifecycle small {
+    color: hsl(131 35% 33%)
+}
+html[data-theme="light"] .assignment-planned-list span {
+    color: hsl(131 35% 33%)
+}
+html[data-theme="light"] .assignment-planned-list small {
+    color: #46564e
+}
+html[data-theme="light"] .library-drop {
+    border: 1px dashed #bfcfc2
+}
+html[data-theme="light"] .activity-overdue {
+    border-top: 1px solid #d6dfd7
+}
+html[data-theme="light"] .plan-queue-status {
+    border: 1px solid #bfcfc2;
+    background: hsl(141 43% 91%);
+    color: hsl(134 37% 33%)
+}
+html[data-theme="light"] .plan-queue-status:hover {
+    background: hsl(143 43% 91%)
+}
+html[data-theme="light"] .plan-overdue-toggle {
+    color: hsl(10 45% 33%)
+}
+html[data-theme="light"] .study-stats-detail>section {
+    border: 1px solid #d6dfd7;
+    background: #f1f5f0
+}
+html[data-theme="light"] .stats-bar strong {
+    color: hsl(137 35% 33%)
+}
+html[data-theme="light"] .stats-bar>span {
+    background: hsl(143 43% 80%)
+}
+html[data-theme="light"] .stats-bar small {
+    color: #46564e
+}
+html[data-theme="light"] .stats-subjects>div {
+    border-top: 1px solid #d6dfd7
+}
+@media (max-width:760px) {
+    html[data-theme="light"] .mobile-subject-select {
+        background: #f1f5f0;
+        border-color: #d6dfd7
+    }
+    html[data-theme="light"] .task-table tr {
+        border: 1px solid #d6dfd7;
+        background: #f1f5f0
+    }
+    html[data-theme="light"] .task-table td:nth-child(4) {
+        border-top: 1px solid #d6dfd7
+    }
+}
+html[data-theme="light"] .bulk-file-review {
+    border: 1px solid #bfcfc2;
+    background: hsl(145 43% 95%)
+}
+html[data-theme="light"] .bulk-file-head {
+    border-bottom: 1px solid #d6dfd7
+}
+html[data-theme="light"] .bulk-file-head p {
+    color: #46564e
+}
+html[data-theme="light"] .bulk-file-row {
+    border-bottom: 1px solid hsl(138 26% 75%)
+}
+html[data-theme="light"] .bulk-file-name>svg {
+    color: hsl(140 35% 33%)
+}
+html[data-theme="light"] .bulk-file-name small {
+    color: #46564e
+}
+html[data-theme="light"] .bulk-file-row select {
+    background: #f8faf7;
+    border-color: #d6dfd7
+}
+html[data-theme="light"] .bulk-file-footer span {
+    color: hsl(129 35% 33%)
+}
+html[data-theme="light"] .bulk-file-privacy {
+    color: #46564e
+}
+html[data-theme="light"] .plan-block-body .plan-block-time {
+    color: hsl(139 35% 33%)
+}
+html[data-theme="light"] .plan-block.is-selected {
+    outline: 1px solid hsl(138 26% 54%)
+}
+html[data-theme="light"] .plan-block.is-lifted {
+    outline: 2px solid hsl(141 42% 54%)
+}
+html[data-theme="light"] .plan-class {
+    background: color-mix(in srgb,var(--class-color) 12%,#f1f5f0);
+    border-color: color-mix(in srgb,var(--class-color) 42%,#d6dfd7);
+    color: #203029
+}
+html[data-theme="light"] .plan-class strong {
+    color: hsl(129 35% 33%)
+}
+html[data-theme="light"] .plan-class small {
+    color: #203029
+}
+html[data-theme="light"] .plan-class.is-unattended {
+    background: #f1f5f0;
+    border: 1px dashed #bfcfc2;
+    color: #46564e
+}
+html[data-theme="light"] .plan-class.is-unattended strong, html[data-theme="light"] .plan-class.is-unattended small {
+    color: #46564e
+}
+html[data-theme="light"] .plan-queue-item.is-planned:hover, html[data-theme="light"] .plan-queue-item.is-planned.is-selected {
+    background: hsl(208 43% 95%)
+}
+html[data-theme="light"] .plan-queue-item.is-selected {
+    outline: 1px solid hsl(146 26% 54%);
+    background: #f1f5f0
+}
+html[data-theme="light"] .plan-queue-item:hover {
+    background: #f1f5f0
+}
+html[data-theme="light"] .plan-selection {
+    background: #f1f5f0;
+    border-top: 1px solid #d6dfd7;
+    color: hsl(137 35% 33%)
+}
+html[data-theme="light"] .plan-quick-dialog {
+    border: 1px solid #bfcfc2;
+    background: #f1f5f0
+}
+html[data-theme="light"] .plan-dialog-top span {
+    color: hsl(148 35% 33%)
+}
+html[data-theme="light"] .plan-quick-dialog label {
+    color: hsl(136 35% 33%)
+}
+@media (max-width:760px) {
+    html[data-theme="light"] .plan-queue-item {
+        border: 1px solid #d6dfd7;
+        background: #f1f5f0
+    }
+    html[data-theme="light"] .plan-edge span {
+        border: 1px solid hsl(147 26% 54%);
+        background: hsl(148 43% 91%)
+    }
+    html[data-theme="light"] .plan-edge:hover span, html[data-theme="light"] .plan-edge:focus-visible span {
+        background: hsl(143 43% 91%);
+        border-color: hsl(139 34% 54%)
+    }
+    html[data-theme="light"] .plan-queue-pager button {
+        border: 1px solid #d6dfd7;
+        color: hsl(140 35% 33%)
+    }
+    html[data-theme="light"] .plan-skipped-strip {
+        border-bottom: 1px solid #d6dfd7;
+        background: #f1f5f0
+    }
+    html[data-theme="light"] .plan-skipped-strip>span {
+        color: #46564e
+    }
+    html[data-theme="light"] .plan-skipped-strip button {
+        border: 1px dashed #bfcfc2;
+        color: hsl(138 35% 33%)
+    }
+}
+html[data-theme="light"] .workspace-welcome {
+    border: 1px solid hsl(142 26% 65%);
+    background: linear-gradient(110deg,hsl(153 43% 95%),hsl(164 43% 95%))
+}
+html[data-theme="light"] .workspace-welcome .eyebrow {
+    color: hsl(147 35% 33%)
+}
+html[data-theme="light"] .workspace-welcome p {
+    color: hsl(140 35% 33%)
+}
+html[data-theme="light"] .setup-subject-chip {
+    border: 1px solid #d6dfd7;
+    background: #f1f5f0
+}
+html[data-theme="light"] .setup-class-list summary {
+    color: hsl(138 35% 33%)
+}
+html[data-theme="light"] .setup-class-form, html[data-theme="light"] .timetable-review {
+    border: 1px solid #d6dfd7;
+    background: #f8faf7
+}
+html[data-theme="light"] .setup-map-row {
+    border-top: 1px solid #d6dfd7
+}
+html[data-theme="light"] .bulk-file-fields label {
+    color: hsl(126 35% 33%)
+}
+html[data-theme="light"] .bulk-file-fields input, html[data-theme="light"] .bulk-file-fields select {
+    background: #f8faf7;
+    border-color: #d6dfd7
+}
+html[data-theme="light"] .activity-dot.activity, html[data-theme="light"] .activity-entry-mark.activity {
+    background: hsl(155 43% 80%)
+}
+html[data-theme="light"] .plan-queue-files button:hover {
+    background: #e7eee8
+}
+html[data-theme="light"] .settings-tabs button:hover {
+    background: #f1f5f0
+}
+html[data-theme="light"] .subject-color-panel {
+    border: 1px solid #bfcfc2
+}
+html[data-theme="light"] .session-week-days button[aria-pressed=true] {
+    background: #e7eee8;
+    color: hsl(146 35% 33%)
+}
+html[data-theme="light"] .session-hour {
+    border-bottom: 1px solid #d6dfd7
+}
+html[data-theme="light"] .session-hour:hover {
+    background: #f1f5f0
+}
+html[data-theme="light"] .session-selection {
+    background: hsl(148 43% 85%);
+    border: 1px solid hsl(141 26% 54%);
+    color: #203029
+}
+html[data-theme="light"] .session-durations button[aria-pressed=true] {
+    background: #e7eee8;
+    border-color: hsl(145 26% 65%)
+}

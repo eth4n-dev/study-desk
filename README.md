@@ -15,6 +15,8 @@ Open `http://127.0.0.1:3000`. A fresh browser workspace starts empty. Add subjec
 
 In **Study plan**, click a scheduled task once on desktop to open its assignment and files. On touch screens, the first tap selects a block for resizing; a second tap opens it. The task queue also offers **Open file** before a task has any planned time. Files are shown near the top of assignment details, with planned-time removal alongside each reserved block.
 
+Use the Light/Dark button in the header to switch appearance. The choice is remembered in this browser, including on the sign-in screen.
+
 **Settings** separates subjects, timetable, study activities, and account data. To add a lecture or exercise, pick its day and time in the week view (drag a range on desktop), then choose the subject and session type. Common durations are one click away; weekly, fortnightly, and single-date sessions are supported. The colour palette closes on selection, Escape, or clicking outside it.
 
 ## How imports work
@@ -47,7 +49,7 @@ For four or five users, the current per-user document is a simple fit. If the ap
 
 Saved browser and cloud workspaces migrate in place. Export a backup with files from **Settings** before switching browsers or restoring data. A backup contains the full study document and uploaded files, so keep it private. A new cloud account can import that backup on its first sign-in.
 
-The source still includes compatibility code for older Ethan-era workspaces. Fresh workspaces contain no personal subjects, timetable, or assignments. This public repository starts from a clean snapshot; the earlier private Git history and its personal calendar fixture are not included.
+The source still includes compatibility code for older Ethan-era workspaces. Fresh workspaces contain no personal subjects, timetable, or assignments. The [public source repository](https://github.com/eth4n-dev/study-desk) starts from a clean snapshot; this project's older private Git history and its personal calendar fixture are not included.
 
 ## Limits
 
