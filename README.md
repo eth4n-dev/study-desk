@@ -22,7 +22,7 @@ Use the Light/Dark button in the header to switch appearance. The choice is reme
 ## How imports work
 
 - **Timetable:** Import a calendar export such as the personal `.ics` file from myStudies. Match each course to an existing subject or create a new one. If the export includes overlapping exercise groups, choose one. **Not chosen yet** leaves that exercise time and room off your timetable; the decision can be changed later. Imports are snapshots, so re-export when your schedule changes.
-- **Assignment PDFs:** Drop one or several into **Course files**. The first page is read locally in the browser. A clearly named assignment with an identifiable subject and explicit due date/time is added automatically. Otherwise a review form asks whether it is an assignment or class material and requests only missing details. There is no weekly-assignment assumption.
+- **Course files:** In a subject’s **Theory & notes**, files save directly to that subject without PDF analysis or a review form. Use **All subjects** for a mixed-subject batch: PDF first pages are read locally, clear matches save automatically, and only uncertain files need review. Assignment files linked to an existing task or carrying a clear subject, title, and due date/time also save automatically. There is no weekly-assignment assumption.
 - **Assignment calendar:** If a course platform provides an `.ics` file of opening and deadline events, import it in **Settings**. Events match subjects by course code or name. Add an assignment manually when no feed or due date is available.
 - **Activity buttons:** Create your own one-tap logs in **Settings**. Existing Russian logs remain intact when upgrading an older workspace.
 
