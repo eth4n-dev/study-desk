@@ -32,15 +32,17 @@ Assignment names and file titles are kept as supplied. Subject names, short name
 
 1. Create a Supabase project and apply [`supabase/001_study_cloud.sql`](supabase/001_study_cloud.sql). It stores one JSON document per account and files under a per-user private path. Row-level security and Storage policies require the signed-in user and a passkey or MFA session.
    Projects created before file deletion was added must also apply [`supabase/002_delete_own_files.sql`](supabase/002_delete_own_files.sql) once, so the trash action can remove the stored file.
-2. In Supabase Authentication, keep **public sign-ups disabled** and invite each person who should use the app. Configure the site URL and redirect origin for the deployed domain. Enable passkeys for that exact domain. Each friend gets an isolated account and can start an empty workspace.
+2. For invite-only access, keep public sign-ups disabled and invite each person in Supabase Authentication. To let people with a particular email domain join without an invitation, apply [`supabase/003_signup_domains.sql`](supabase/003_signup_domains.sql), add the domain to `public.study_signup_domains`, and configure its `public.study_before_user_created` function as the **Before User Created** Postgres Auth Hook. Set up custom SMTP before enabling public sign-ups: Supabase's default email sender only delivers to project team addresses. Keep email confirmation enabled, then enable **Allow new users to sign up**. Existing users outside the allowed domain can still sign in; new accounts outside it are rejected by the hook.
+   Configure the site URL and redirect origin for the deployed domain. Enable passkeys for that exact domain. Each person gets an isolated account and can start an empty workspace.
 3. Set these build variables in your hosting provider; copy [`.env.example`](.env.example) for local cloud testing:
 
    ```sh
    NEXT_PUBLIC_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
    NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=YOUR_PUBLISHABLE_KEY
+   NEXT_PUBLIC_OPEN_SIGNUP_DOMAIN=YOUR_ALLOWED_DOMAIN
    ```
 
-4. Deploy the repository to Netlify. [`netlify.toml`](netlify.toml) builds and publishes `out/`. The domain used for passkeys must match the deployed site. Test one invited account before adding personal files.
+4. Deploy the repository to Netlify. [`netlify.toml`](netlify.toml) builds and publishes `out/`. Set `NEXT_PUBLIC_OPEN_SIGNUP_DOMAIN` only after the matching server hook, SMTP sender, and sign-up setting are ready; leave it unset for invite-only access. The domain used for passkeys must match the deployed site. Test a new domain account before adding personal files.
 
 The browser must know the Supabase project URL and publishable key; `NEXT_PUBLIC_` values are bundled into the static site. These are **not secrets**. Access control comes from the database and Storage policies. Never put a database password, service-role key, Moodle token, private `.ics` feed URL, backup, or personal PDF in Git or client environment variables. See [SECURITY.md](SECURITY.md).
 

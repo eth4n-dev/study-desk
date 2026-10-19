@@ -1,5 +1,6 @@
 -- Apply in a new Supabase project's SQL editor before enabling cloud mode.
--- Keep public sign-ups disabled and invite each intended user in Authentication.
+-- Keep public sign-ups disabled until a Before User Created domain hook and
+-- custom SMTP are configured; see 003_signup_domains.sql.
 
 create table if not exists public.study_documents (
   user_id uuid primary key references auth.users(id) on delete cascade,
