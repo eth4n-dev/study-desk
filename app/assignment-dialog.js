@@ -42,7 +42,7 @@ function AssignmentForm({task,defaultSubject,tasks,rules,startRepeating,onSave,o
    onSave({...task,id:task?.id||crypto.randomUUID(),subject:sub,title:plainDashes(title.trim()),kind,release,due,
     dateOnly:false,
     status:task?.status||'Not started',notes:plainDashes(f.get('notes')),files:task?.files||[],
-    noFile:task?.noFile||false,source:'You'},{every:repeatEvery,availableOffset:repeatEvery&&kind==='file'?availability?.offset:null,availableTime:repeatEvery&&kind==='file'?availability?.time:null,until:f.get('repeatUntil')});
+    noFile:kind==='simple'||(task?.noFile&&taskType(task)==='file'),source:'You'},{every:repeatEvery,availableOffset:repeatEvery&&kind==='file'?availability?.offset:null,availableTime:repeatEvery&&kind==='file'?availability?.time:null,until:f.get('repeatUntil')});
   }catch(err){setError(err.message);}
  }
  if(task?.kind==='personal')return <form className="assignment-form" onSubmit={submit}><label>Task title<input ref={titleInput} value={title} onChange={e=>setTitle(e.target.value)} required maxLength={160}/></label>{error&&<p className="assignment-form-error" role="alert">{error}</p>}<div className="assignment-dialog-footer"><button type="button" className="button" onClick={onCancel}>Cancel</button><button className="button primary">Save task</button></div></form>;
@@ -53,7 +53,7 @@ function AssignmentForm({task,defaultSubject,tasks,rules,startRepeating,onSave,o
    <DateTimeField label="Deadline (optional)" name="due" value={deadline} onChange={setDeadline}/>
   </div>
   <div className="assignment-secondary-fields">
-   <label>Task type<ChoiceSelect value={kind} onChange={e=>setKind(e.target.value)}><option value="file">Assignment with files</option><option value="online">Online assignment</option><option value="quiz">Quiz</option>{kind==='codeexpert'&&<option value="codeexpert">CodeExpert (existing)</option>}</ChoiceSelect></label>
+   <label>Task type<ChoiceSelect value={kind} onChange={e=>setKind(e.target.value)}><option value="file">Assignment with files</option><option value="simple">Simple assignment</option><option value="online">Online assignment</option><option value="quiz">Quiz</option>{kind==='codeexpert'&&<option value="codeexpert">CodeExpert (existing)</option>}</ChoiceSelect></label>
    <label>Notes <span className="field-optional">Optional</span><textarea name="notes" defaultValue={task?.notes||''} rows={2} placeholder="Add a note…"/></label>
   </div>
   <div className="repeat-setting">
@@ -109,7 +109,7 @@ export default function AssignmentDialog({task,defaultSubject,tasks,rules,files,
      {codeExpert&&<a className="moodle-section-link" href={codeExpert} target="_blank" rel="noopener noreferrer" aria-label={`Open ${task.title} in CodeExpert`}>Open CodeExpert<ArrowUpRight size={15}/></a>}
      {moodle&&<a className="moodle-section-link" href={moodle} target="_blank" rel="noopener noreferrer" aria-label={`Find ${task.title} on Moodle`}>Find on Moodle<ArrowUpRight size={15}/></a>}
     </div>}
-    {online&&taskType(task)!=='personal'&&<details className="assignment-more optional-attachment"><summary>More actions<ChevronDown size={15}/></summary><div className="optional-attachment-body"><p>Attach a file (optional)</p>{renderUpload(task,true)}</div></details>}
+    {online&&!['personal','simple'].includes(taskType(task))&&<details className="assignment-more optional-attachment"><summary>More actions<ChevronDown size={15}/></summary><div className="optional-attachment-body"><p>Attach a file (optional)</p>{renderUpload(task,true)}</div></details>}
     {task.notes&&<details className="assignment-more"><summary>Notes<ChevronDown size={15}/></summary><p className="assignment-notes">{task.notes}</p></details>}
     {task.exercises?.length>0&&<details className="assignment-more"><summary>Exercises<span className="subtle-label">{task.exercises.length}</span><ChevronDown size={15}/></summary><ul className="assignment-exercises">{task.exercises.map(name=><li key={name}>{name}</li>)}</ul></details>}
     <footer className="assignment-dialog-footer"><button ref={editButton} className="text-button" onClick={()=>setEditing(true)}><Pencil size={14}/>Edit details</button>{task.kind==='personal'&&<button className="text-button personal-delete" onClick={()=>{if(window.confirm('Delete this personal task and its planned time?'))onDelete(task.id);}}>Delete task</button>}<button className="button" onClick={onClose}>Close</button></footer>
