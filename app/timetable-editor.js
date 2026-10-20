@@ -5,6 +5,7 @@ import {addDays,fmt,monday,scheduleSlots,timeLabel,todayKey} from '../lib/model.
 import {normalizeTime} from '../lib/date-input.mjs';
 import {SESSION_START,SESSION_END,selectSessionRange,sessionRecord} from '../lib/timetable-editor.mjs';
 import DateTimeField from './date-time-field';
+import ChoiceSelect from './choice-select';
 const dayNames=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 const label=date=>fmt(date+'T12:00Z',{weekday:'short',day:'numeric',month:'short'});
 const toMinutes=value=>{if(value==='24:00')return 1440;const normalized=normalizeTime(value);if(!normalized)return NaN;const [h,m]=normalized.split(':').map(Number);return h*60+m;};
@@ -40,12 +41,12 @@ export default function TimetableEditor({state,initial,onSave,onClose}){
    </div>)}</div></div>
   </div><form className="session-details" onSubmit={submit}>
    <p className="session-chosen-time"><CalendarDays size={17}/>{label(form.date)} · {timeLabel(form.start)}–{timeLabel(form.end)}</p>
-   <label>Subject<select ref={subjectField} value={form.subject} onChange={event=>update({subject:event.target.value})} required><option value="">Choose subject</option>{state.subjects.map(subject=><option key={subject.id} value={subject.id}>{subject.name}</option>)}</select></label>
-   <label>Session type<select value={form.type} onChange={event=>update({type:event.target.value})}>{[...new Set(['Lecture','Exercise','Practical','Seminar','Class','Other',form.type])].map(type=><option key={type} value={type}>{type==='Exercise'?'Exercise session':type}</option>)}</select></label>
+   <label>Subject<ChoiceSelect ref={subjectField} value={form.subject} onChange={event=>update({subject:event.target.value})} required><option value="">Choose subject</option>{state.subjects.map(subject=><option key={subject.id} value={subject.id}>{subject.name}</option>)}</ChoiceSelect></label>
+   <label>Session type<ChoiceSelect value={form.type} onChange={event=>update({type:event.target.value})}>{[...new Set(['Lecture','Exercise','Practical','Seminar','Class','Other',form.type])].map(type=><option key={type} value={type}>{type==='Exercise'?'Exercise session':type}</option>)}</ChoiceSelect></label>
    <div className="session-time-fields"><label>Start · 24h<input aria-label="Session start time" type="text" inputMode="numeric" value={startText} maxLength={5} required onChange={event=>setStartText(event.target.value)} onBlur={()=>{const start=toMinutes(startText);if(Number.isFinite(start)){const duration=form.end-form.start;update({start,end:Math.min(1440,start+duration)});}}}/></label><label>End · 24h<input aria-label="Session end time" type="text" inputMode="numeric" value={endText} maxLength={5} required onChange={event=>setEndText(event.target.value)} onBlur={()=>{const end=toMinutes(endText);if(Number.isFinite(end)&&end>form.start)update({end});}}/></label></div>
    <div className="session-durations" role="group" aria-label="Session duration">{[45,60,90,105,120].map(duration=><button type="button" key={duration} aria-pressed={form.end-form.start===duration} onClick={()=>update({end:Math.min(1440,form.start+duration)})}>{duration}m</button>)}</div>
    <label>Room <span className="optional-label">Optional</span><input value={form.room} onChange={event=>update({room:event.target.value})} placeholder="e.g. CHN F42" maxLength={100}/></label>
-   <label>Repeat<select value={form.repeat} onChange={event=>update({repeat:event.target.value})}><option value="1">Every week</option><option value="2">Every two weeks</option><option value="once">Just this date</option></select></label>
+   <label>Repeat<ChoiceSelect value={form.repeat} onChange={event=>update({repeat:event.target.value})}><option value="1">Every week</option><option value="2">Every two weeks</option><option value="once">Just this date</option></ChoiceSelect></label>
    {form.repeat!=='once'&&<details className="session-repeat-dates"><summary>First & last date <span>{label(form.startDate)} – {label(form.endDate)}</span></summary><DateTimeField label="First date" dateOnly required value={form.startDate} onChange={startDate=>update({startDate})}/><DateTimeField label="Last date" dateOnly required value={form.endDate} onChange={endDate=>update({endDate})}/></details>}
    {error&&<p className="assignment-form-error" role="alert">{error}</p>}
    <div className="session-save-actions"><button type="submit" className="button primary"><Plus size={15}/>{initial?'Save changes':'Add to timetable'}</button><button type="button" className="text-button quiet" onClick={onClose}>Cancel</button></div>

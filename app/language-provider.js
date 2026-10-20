@@ -49,6 +49,20 @@ function localizeTree(root,language){
 export function LanguageProvider({children}){
  const [language,updateLanguage]=useState('en');
  useEffect(()=>{
+  function clearTextFocus(event){
+   const active=document.activeElement;
+   const editable=active instanceof HTMLTextAreaElement||active instanceof HTMLInputElement&&['text','search','email','url','tel','password'].includes(active.type)||active?.isContentEditable;
+   if(!editable||active===event.target||active.contains(event.target))return;
+   if(typeof active.setSelectionRange==='function'){
+    try{const end=active.value.length;active.setSelectionRange(end,end);}catch{}
+   }
+   window.getSelection()?.removeAllRanges();
+   active.blur();
+  }
+  document.addEventListener('pointerdown',clearTextFocus,true);
+  return()=>document.removeEventListener('pointerdown',clearTextFocus,true);
+ },[]);
+ useEffect(()=>{
   let saved='en';
   try{saved=normalizeLanguage(localStorage.getItem(LANGUAGE_STORAGE_KEY));}catch{}
   setLanguage(saved);updateLanguage(saved);

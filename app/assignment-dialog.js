@@ -7,6 +7,7 @@ import ProgressSelect from './progress-select';
 import DateTimeField from './date-time-field';
 import RepeatSelect from './repeat-select';
 import RepeatAvailabilityField from './repeat-availability-field';
+import ChoiceSelect from './choice-select';
 
 function AssignmentForm({task,defaultSubject,tasks,rules,startRepeating,onSave,onCancel}){
  const SUBJECTS=useSubjects();
@@ -49,11 +50,11 @@ function AssignmentForm({task,defaultSubject,tasks,rules,startRepeating,onSave,o
  return <form className="assignment-form" onSubmit={submit}>
   <label>Assignment name<input ref={titleInput} name="title" value={title} onChange={e=>setTitle(e.target.value)} required maxLength={160}/></label>
   <div className="assignment-form-pair">
-   <label>Subject<select value={sub} onChange={e=>setSub(e.target.value)} required><option value="">Choose subject</option>{SUBJECTS.map(s=><option value={s.id} key={s.id}>{s.short}</option>)}</select></label>
+   <label>Subject<ChoiceSelect value={sub} onChange={e=>setSub(e.target.value)} required><option value="">Choose subject</option>{SUBJECTS.map(s=><option value={s.id} key={s.id}>{s.short}</option>)}</ChoiceSelect></label>
    <DateTimeField label="Deadline (optional)" name="due" value={deadline} onChange={setDeadline}/>
   </div>
   <div className="assignment-secondary-fields">
-   <label>Task type<select value={kind} onChange={e=>setKind(e.target.value)}><option value="file">Assignment with files</option><option value="online">Online assignment</option><option value="quiz">Quiz</option>{kind==='codeexpert'&&<option value="codeexpert">CodeExpert (existing)</option>}</select></label>
+   <label>Task type<ChoiceSelect value={kind} onChange={e=>setKind(e.target.value)}><option value="file">Assignment with files</option><option value="online">Online assignment</option><option value="quiz">Quiz</option>{kind==='codeexpert'&&<option value="codeexpert">CodeExpert (existing)</option>}</ChoiceSelect></label>
    <label>Notes <span className="field-optional">Optional</span><textarea name="notes" defaultValue={task?.notes||''} rows={2} placeholder="Add a note…"/></label>
   </div>
   <div className="repeat-setting">
@@ -103,9 +104,8 @@ export default function AssignmentDialog({task,defaultSubject,tasks,rules,files,
      {attached.length>0&&<div className="assignment-file-list">{attached.map(f=><button type="button" className="assignment-file" onClick={()=>onOpenFile(f)} aria-label={`Open ${f.name}`} key={f.id}><File size={17}/><span>{f.name}</span><span className="assignment-file-action">Open<ArrowUpRight size={14}/></span></button>)}</div>}
      {!online&&supportsUploads(task)&&renderUpload(task,attached.length>0)}
     </section>}
-    <div className="assignment-lifecycle"><div><span>Progress</span><strong>{task.status}</strong>{started&&<small>Started {fmt(started.at,{weekday:'short'})} · {wallTime(started.at).slice(11,16)}</small>}{finished&&<small>Finished {fmt(finished.at,{weekday:'short'})} · {wallTime(finished.at).slice(11,16)}</small>}</div><button className={`button ${task.status==='In progress'?'primary':''}`} onClick={()=>onProgress(task.status==='Not started'?'In progress':task.status==='In progress'?'Done':'In progress')}>{task.status==='Not started'?<><Play size={15}/>Start now</>:task.status==='In progress'?<><Check size={15}/>Finish now</>:'Reopen assignment'}</button></div>
+    <div className="assignment-lifecycle"><div><span>Progress</span><ProgressSelect label={`Status for ${task.title}`} value={task.status} onChange={onProgress}/>{started&&<small>Started {fmt(started.at,{weekday:'short'})} · {wallTime(started.at).slice(11,16)}</small>}{finished&&<small>Finished {fmt(finished.at,{weekday:'short'})} · {wallTime(finished.at).slice(11,16)}</small>}</div><button className={`button ${task.status==='In progress'?'primary':''}`} onClick={()=>onProgress(task.status==='Not started'?'In progress':task.status==='In progress'?'Done':'In progress')}>{task.status==='Not started'?<><Play size={15}/>Start now</>:task.status==='In progress'?<><Check size={15}/>Finish now</>:'Reopen assignment'}</button></div>
     <div className="assignment-planned"><div className="assignment-files-heading"><h3>Study plan</h3><button className="text-button" onClick={()=>onPlanTask(task.id)}>{planned.length?'Add time':'Plan time'}<ArrowUpRight size={14}/></button></div>{planned.length?<div className="assignment-planned-list">{planned.map(block=><div className={`assignment-plan-row ${block.id===plannedBlockId?'is-current':''}`} key={block.id}><span><Clock3 size={14}/>{fmt(block.date+'T12:00Z',{weekday:'short'})} · {timeLabel(block.start)}–{timeLabel(block.start+block.duration)}</span>{onRemovePlan&&<button type="button" className="icon-button" aria-label={`Remove planned time ${fmt(block.date+'T12:00Z')} at ${timeLabel(block.start)}`} title="Remove planned time" onClick={()=>onRemovePlan(block.id)}><Trash2 size={15}/></button>}</div>)}</div>:<p className="muted">No time planned yet.</p>}</div>
-    <details className="assignment-more assignment-correct-status"><summary>Correct progress<ChevronDown size={15}/></summary><div className="assignment-progress"><span>Set status</span><ProgressSelect label={`Progress for ${task.title}`} value={task.status} onChange={onProgress}/></div></details>
     {(moodle||codeExpert)&&<div className="assignment-resource-links">
      {codeExpert&&<a className="moodle-section-link" href={codeExpert} target="_blank" rel="noopener noreferrer" aria-label={`Open ${task.title} in CodeExpert`}>Open CodeExpert<ArrowUpRight size={15}/></a>}
      {moodle&&<a className="moodle-section-link" href={moodle} target="_blank" rel="noopener noreferrer" aria-label={`Find ${task.title} on Moodle`}>Find on Moodle<ArrowUpRight size={15}/></a>}

@@ -1544,3 +1544,6 @@ html[data-theme="light"] .tone-numerical { --event-bg: hsl(155 43% 87%); --event
 html[data-theme="light"] .calendar-event:not(.unattended-event) { border-color: var(--event-line) }
 html[data-theme="light"] .calendar-event.unattended-event { --event-bg: #e7eee8; --event-line: #b8cbbd; border-color: #b8cbbd }
 html[data-theme="light"] .library-file-delete:hover:not(:disabled) { color: #9f382e; background: #f6e5e1 }
+html[data-theme="light"] .bulk-file-row .choice-trigger,
+html[data-theme="light"] .bulk-file-fields .choice-trigger { background: #f8faf7; border-color: #d6dfd7 }
+html[data-theme="light"] .activity-editor .choice-trigger { background: #fff; color: var(--text) }
