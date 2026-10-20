@@ -903,3 +903,15 @@ nav button.active,.sidebar-bottom>button.active{background:#1e3930;color:#bcf0d9
 .library-file.custom-order{gap:11px}
 @media(max-width:760px){.files-heading{gap:12px}.file-sort-select{width:176px}.library-file.custom-order{grid-template-columns:42px auto minmax(0,1fr) 36px 36px;gap:8px}.library-reorder{grid-column:1;grid-row:1}.library-grip{display:none}.library-move-buttons .icon-button{min-width:38px;min-height:24px}.library-file.custom-order>svg{grid-column:2}.library-file.custom-order .library-file-open{grid-column:3}.library-file.custom-order .file-link-select{grid-column:3/-1}}
 @media(max-width:440px){.files-title{display:block}.files-title .subtle-label{display:block;margin-top:2px}.file-sort-select{width:169px}}
+
+.account-control{position:relative;display:flex;align-items:center;flex:none}
+.account-control .avatar{border:1px solid transparent;min-width:32px;width:32px;height:32px;cursor:pointer}
+.account-control .avatar:hover,.account-control .avatar[aria-expanded="true"]{background:color-mix(in srgb,var(--accent) 20%,var(--raised));border-color:color-mix(in srgb,var(--accent) 48%,var(--line));filter:none}
+.account-popover{position:absolute;top:calc(100% + 11px);right:0;z-index:45;width:min(280px,calc(100vw - 24px));padding:7px;border:1px solid var(--line);border-radius:8px;background:var(--panel);box-shadow:0 16px 36px #0006;color:var(--text)}
+.account-identity{padding:11px 10px 13px;border-bottom:1px solid var(--line);min-width:0}
+.account-identity strong,.account-identity span{display:block;overflow-wrap:anywhere;line-height:1.4}
+.account-identity strong{font-size:13px;font-weight:600}
+.account-identity span{margin-top:3px;color:var(--muted);font-size:11px}
+.account-signout{display:flex;align-items:center;gap:9px;width:100%;min-height:42px;padding:9px 10px;margin-top:5px;border-radius:5px;text-align:left;font-size:12px}
+.account-signout:hover:not(:disabled){background:color-mix(in srgb,var(--accent) 12%,var(--panel));filter:none}
+.account-signout svg{color:var(--muted)}
