@@ -491,6 +491,7 @@ nav button.active,.sidebar-bottom>button.active{background:#1e3930;color:#bcf0d9
 
 /* The selected date and today's date have separate, persistent cues. */
 .activity-heading-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.activity-heading-actions .button{height:42px;min-height:42px}
 .activity-month-nav{display:flex;align-items:center;gap:12px;min-width:0}
 .activity-month-nav h2{min-width:145px;text-align:center}
 .activity-month-nav .button{background:transparent;color:#c1d0c7}
@@ -923,7 +924,7 @@ label>.choice-select{margin-top:7px}
 .activity-time-hint{margin:12px 0 7px;color:var(--muted);font-size:11px}
 .activity-time-error{margin:7px 0 0;color:var(--red);font-size:11px}
 .activity-time-columns{display:grid;grid-template-columns:1fr 1fr;gap:8px;min-height:0;overflow:hidden}
-.activity-time-columns>div{display:grid;align-content:start;gap:2px;overflow:auto;scrollbar-width:thin}
+.activity-time-columns>div{display:grid;align-content:start;gap:2px;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin}
 .activity-time-columns button{min-height:34px;border-radius:5px;font-size:13px;font-variant-numeric:tabular-nums}
 .activity-time-columns button:hover,.activity-time-columns button:focus-visible{background:color-mix(in srgb,var(--accent) 13%,var(--panel));filter:none}
 .activity-time-columns button.selected{background:color-mix(in srgb,var(--accent) 22%,var(--panel));color:var(--accent);font-weight:600}
@@ -987,6 +988,13 @@ label>.choice-select{margin-top:7px}
 .admin-error-list{border:1px solid var(--line);border-radius:8px;overflow:hidden}.admin-error-list>div{display:flex;justify-content:space-between;gap:15px;padding:13px 16px;border-bottom:1px solid var(--line);font-size:12px}.admin-error-list>div:last-child{border-bottom:0}.admin-error-list time,.admin-empty,.admin-footnote{color:var(--muted)}.admin-empty,.admin-footnote{font-size:12px;line-height:1.6}.admin-footnote{margin-top:16px}.admin-error{color:var(--red);font-size:12px}
 .account-error{color:var(--red);font-size:11px;line-height:1.5;padding:8px 10px}
 .account-notice{color:var(--accent);font-size:11px;line-height:1.5;padding:8px 10px}
+
+/* Keep keyboard focus visible without the heavy blue rings around form controls. */
+button:focus-visible,summary:focus-visible,.choice-trigger:focus-visible,.choice-option:focus-visible{outline:1px solid var(--accent);outline-offset:2px}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:0;border-color:var(--accent);box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 50%,transparent)}
+.date-time-control:focus-within,.activity-task-search:focus-within{outline:0;border-color:var(--accent);box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 50%,transparent)}
+.date-trigger:focus-visible{outline:0}
+@media(max-width:760px){.activity-heading-actions .button{height:auto;min-height:44px}}
 @media(max-width:640px){.admin-content{padding:32px 18px 60px}.admin-test-panel{display:block;padding:21px}.admin-test-actions{margin-top:20px}.admin-test-actions .button{width:100%}.admin-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-error-list>div{display:block}.admin-error-list time{display:block;margin-top:4px}}
 .language-choice>span{font-size:12px}
 .files-title{display:flex;align-items:baseline;gap:13px;min-width:0}
