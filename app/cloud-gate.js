@@ -18,7 +18,7 @@ function hasPasskeySession(session){
 
 export default function CloudGate({children}){
  const api=useMemo(()=>cloudClient(),[]);
- const [session,setSession]=useState(undefined),[access,setAccess]=useState('checking');
+ const [session,setSession]=useState(undefined),[profileUser,setProfileUser]=useState(null),[access,setAccess]=useState('checking');
  const [mode,setMode]=useState('sign-in'),[email,setEmail]=useState(''),[sentAddress,setSentAddress]=useState(''),[emailCode,setEmailCode]=useState(''),[busy,setBusy]=useState(false),[error,setError]=useState('');
  const [totp,setTotp]=useState(null),[factors,setFactors]=useState([]),[code,setCode]=useState('');
 
@@ -28,6 +28,18 @@ export default function CloudGate({children}){
   const {data:{subscription}}=api.auth.onAuthStateChange((_event,next)=>{if(alive)setSession(next);});
   return()=>{alive=false;subscription.unsubscribe();};
  },[api]);
+ useEffect(()=>{
+  let alive=true;
+  if(!session?.user?.id){setProfileUser(null);return;}
+  async function refreshProfile(){
+   const {data}=await api.auth.getUser();
+   if(alive&&data?.user?.id===session.user.id)setProfileUser(data.user);
+  }
+  refreshProfile().catch(()=>{});
+  window.addEventListener('focus',refreshProfile);
+  document.addEventListener('visibilitychange',refreshProfile);
+  return()=>{alive=false;window.removeEventListener('focus',refreshProfile);document.removeEventListener('visibilitychange',refreshProfile);};
+ },[api,session?.user?.id]);
  useEffect(()=>{
   let alive=true;
   if(session===undefined)return;
@@ -49,9 +61,7 @@ export default function CloudGate({children}){
  async function passkey(){await run(async()=>{const {error}=await api.auth.signInWithPasskey();if(error)throw error;},{quietCancellation:true});}
  function changeMode(next){setMode(next);setError('');setSentAddress('');setEmailCode('');}
  async function sendCode(event){event?.preventDefault();await run(async()=>{
-  // Existing ETH student accounts may still use the long-form address until
-  // their Auth identity is migrated. New accounts always use the short form.
-  const address=mode==='sign-up'?canonicalAuthEmail(email):email.trim().toLowerCase();
+  const address=canonicalAuthEmail(email);
   if(mode==='sign-up'&&!emailMatchesSignupDomain(address,openSignupDomains))throw new Error(`Use a ${signupDomainList} email address to create an account.`);
   const {error}=await api.auth.signInWithOtp({email:address,options:{shouldCreateUser:mode==='sign-up',emailRedirectTo:window.location.origin}});
   if(error)throw error;
@@ -68,7 +78,8 @@ export default function CloudGate({children}){
  async function verifyTotp(event){event.preventDefault();await run(async()=>{const factorId=totp?.id||factors[0]?.id;if(!factorId)throw new Error('Set up an authenticator first.');const {error}=await api.auth.mfa.challengeAndVerify({factorId,code:code.trim()});if(error)throw error;setCode('');const {data}=await api.auth.getSession();setSession(data.session);});}
  async function signOut(){const {error}=await api.auth.signOut({scope:'local'});if(error)throw error;setSession(null);setSentAddress('');setEmailCode('');setMode('sign-in');setAccess('signed-out');}
 
- const workspace=useMemo(()=>({api,user:session?.user,signOut}),[api,session?.user?.id]);
+ const currentUser=profileUser?.id===session?.user?.id?profileUser:session?.user;
+ const workspace=useMemo(()=>({api,user:currentUser,signOut}),[api,currentUser]);
  if(access==='ready'&&session)return children(workspace);
  return <main className="cloud-gate"><div className="cloud-gate-card"><div className="cloud-gate-theme"><ThemeSwitcher/></div>
   <div className="cloud-gate-brand" translate="no"><GraduationCap size={25}/><span>Study <b>desk</b></span></div>

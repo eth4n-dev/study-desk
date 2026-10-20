@@ -6,6 +6,7 @@ import {isPasskeyCancellation} from '../lib/auth-errors.mjs';
 export default function AccountMenu({name,email,onSignOut,onAdmin,onMigrateEmail}){
  const [open,setOpen]=useState(false),[busy,setBusy]=useState(false),[error,setError]=useState(''),[notice,setNotice]=useState('');
  const menuRef=useRef(null);
+ useEffect(()=>{if(!onMigrateEmail)setNotice('');},[onMigrateEmail]);
  useEffect(()=>{
   if(!open)return;
   function closeOnOutside(event){if(!menuRef.current?.contains(event.target))setOpen(false);}
