@@ -47,7 +47,7 @@ function AssignmentForm({task,defaultSubject,tasks,rules,startRepeating,onSave,o
  }
  if(task?.kind==='personal')return <form className="assignment-form" onSubmit={submit}><label>Task title<input ref={titleInput} value={title} onChange={e=>setTitle(e.target.value)} required maxLength={160}/></label>{error&&<p className="assignment-form-error" role="alert">{error}</p>}<div className="assignment-dialog-footer"><button type="button" className="button" onClick={onCancel}>Cancel</button><button className="button primary">Save task</button></div></form>;
  return <form className="assignment-form" onSubmit={submit}>
-  <label>Assignment name<input ref={titleInput} name="title" value={title} onChange={e=>setTitle(e.target.value)} required maxLength={160}/></label>
+  <label>Assignment name<input className="assignment-name-input" ref={titleInput} name="title" value={title} onChange={e=>setTitle(e.target.value)} required maxLength={160} placeholder="e.g. Sheet 1 or Portfolio 1"/>{repeatEvery>0&&<span className="field-hint">The final number increases with each repeat; without one, the name stays the same.</span>}</label>
   <div className="assignment-form-pair">
    <label>Subject<ChoiceSelect value={sub} onChange={e=>setSub(e.target.value)} required><option value="">Choose subject</option>{SUBJECTS.map(s=><option value={s.id} key={s.id}>{s.short}</option>)}</ChoiceSelect></label>
    <DateTimeField label="Deadline (optional)" name="due" value={deadline} onChange={setDeadline}/>
@@ -61,7 +61,7 @@ function AssignmentForm({task,defaultSubject,tasks,rules,startRepeating,onSave,o
    {repeatEvery>0&&<div className="assignment-extra-fields repeat-fields">
      {kind==='file'&&<><RepeatAvailabilityField every={repeatEvery} deadline={deadline} value={availability} onChange={setAvailability}/><span className="field-hint">An upload reminder appears on the chosen day and time each cycle. Leave empty to keep reminders off.</span></>}
      <DateTimeField label="Repeat until" name="repeatUntil" dateOnly required defaultValue={existingRule?.endDate||defaultUntil}/>
-     {existingRule?<p className="field-hint">Future repeats follow the selected interval. Existing deadlines stay unchanged.</p>:<p className="field-hint">This assignment starts the series. Future repeats get their own deadlines and files; a number at the end of the name advances automatically.</p>}
+     {existingRule?<p className="field-hint">Future repeats follow the selected interval. Existing deadlines stay unchanged.</p>:<p className="field-hint">This assignment starts the series. Future repeats get their own deadlines and files.</p>}
    </div>}
   </div>
   {error&&<p className="assignment-form-error" role="alert">{error}</p>}
