@@ -27,6 +27,15 @@ test('dynamic repeat labels and account invitation copy follow the selected lang
  assert.match(translate('Anyone with an @ethz.ch or @etu.unige.ch email address can join. Existing invited accounts can sign in too.','fr'),/@ethz\.ch ou @etu\.unige\.ch/);
 });
 
+test('course upload headings and ordering controls translate while names stay intact',()=>{
+ assert.equal(translate('Add to Numerical Methods notes','it'),'Aggiungi agli appunti di Numerical Methods');
+ assert.equal(translate('Add to Numerical Methods notes','fr'),'Ajouter aux notes de Numerical Methods');
+ assert.equal(translate('Add to Numerical Methods notes','de'),'Zu den Notizen für Numerical Methods hinzufügen');
+ assert.equal(translate('Newest first','it'),'Più recenti prima');
+ assert.equal(translate('2 files saved','it'),'2 file salvati');
+ assert.match(translate('Move Sheet04.pdf up','fr'),/Sheet04\.pdf/);
+});
+
 test('planner labels and accessible descriptions use the chosen language',()=>{
  assert.equal(translate('0 min planned','it'),'0 min pianificati');
  assert.match(translate('Numerical Methods Lecture, 08:15 to 10:00. Open attendance options.','de'),/Vorlesung.*Teilnahmeoptionen/);

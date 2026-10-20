@@ -1,6 +1,7 @@
 'use client';
 import {createContext,useContext,useEffect,useState} from 'react';
 import {LANGUAGES,LANGUAGE_STORAGE_KEY,normalizeLanguage,setLanguage,translate} from '../lib/i18n.mjs';
+import ChoiceSelect from './choice-select';
 
 const LanguageContext=createContext({language:'en',changeLanguage:()=>{}});
 const translatedText=new WeakMap();
@@ -79,5 +80,5 @@ export function useLanguage(){return useContext(LanguageContext);}
 
 export function LanguageSettings(){
  const {language,changeLanguage}=useLanguage();
- return <section className="settings-section language-section"><div className="section-heading"><h2>Language</h2></div><p>Choose the language used for menus, dates, and controls. Your subjects and assignment names stay as you entered them.</p><label className="language-choice">App language<select value={language} onChange={event=>changeLanguage(event.target.value)} translate="no">{LANGUAGES.map(item=><option key={item.code} value={item.code}>{item.name}</option>)}</select></label></section>;
+ return <section className="settings-section language-section"><div className="section-heading"><h2>Language</h2></div><p>Choose the language used for menus, dates, and controls. Your subjects and assignment names stay as you entered them.</p><div className="language-choice"><span>App language</span><ChoiceSelect label="App language" value={language} onChange={changeLanguage} options={LANGUAGES.map(item=>({value:item.code,label:item.name}))} className="language-selector"/></div></section>;
 }
