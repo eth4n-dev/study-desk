@@ -4,6 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  NEXT_PUBLIC_OPEN_SIGNUP_DOMAINS = "ethz.ch,etu.unige.ch"
 
 [[headers]]
   for = "/*"

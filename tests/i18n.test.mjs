@@ -24,6 +24,7 @@ test('dynamic repeat labels and account invitation copy follow the selected lang
  assert.equal(translate('Every 3 weeks · Active','it'),'Ogni 3 settimane · Attivo');
  assert.equal(translate('Next available 20 Oct at 09:00','de'),'Nächste Verfügbarkeit: 20 Oct um 09:00');
  assert.match(translate('Anyone with an @ethz.ch address can join. Existing invited accounts can sign in too.','fr'),/@ethz\.ch/);
+ assert.match(translate('Anyone with an @ethz.ch or @etu.unige.ch email address can join. Existing invited accounts can sign in too.','fr'),/@ethz\.ch ou @etu\.unige\.ch/);
 });
 
 test('planner labels and accessible descriptions use the chosen language',()=>{

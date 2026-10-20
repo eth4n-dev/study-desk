@@ -39,10 +39,10 @@ Assignment names and file titles are kept as supplied. Subject names, short name
    ```sh
    NEXT_PUBLIC_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
    NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=YOUR_PUBLISHABLE_KEY
-   NEXT_PUBLIC_OPEN_SIGNUP_DOMAIN=YOUR_ALLOWED_DOMAIN
+   NEXT_PUBLIC_OPEN_SIGNUP_DOMAINS=YOUR_ALLOWED_DOMAIN,ANOTHER_ALLOWED_DOMAIN
    ```
 
-4. Deploy the repository to Netlify. [`netlify.toml`](netlify.toml) builds and publishes `out/`. Set `NEXT_PUBLIC_OPEN_SIGNUP_DOMAIN` only after the matching server hook, SMTP sender, and sign-up setting are ready; leave it unset for invite-only access. The domain used for passkeys must match the deployed site. Test a new domain account before adding personal files.
+4. Deploy the repository to Netlify. [`netlify.toml`](netlify.toml) builds and publishes `out/`. Set `NEXT_PUBLIC_OPEN_SIGNUP_DOMAINS` to a comma-separated list only after the matching server hook, SMTP sender, and sign-up setting are ready; leave it unset for invite-only access. The previous single-domain variable remains supported. The domain used for passkeys must match the deployed site. Test a new domain account before adding personal files.
 
 The browser must know the Supabase project URL and publishable key; `NEXT_PUBLIC_` values are bundled into the static site. These are **not secrets**. Access control comes from the database and Storage policies. Never put a database password, service-role key, Moodle token, private `.ics` feed URL, backup, or personal PDF in Git or client environment variables. See [SECURITY.md](SECURITY.md).
 

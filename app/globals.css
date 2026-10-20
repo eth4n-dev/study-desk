@@ -154,7 +154,7 @@ nav button.active,.sidebar-bottom>button.active{background:#1e3930;color:#bcf0d9
 
 /* Assignment details stay over the calendar, with progress as the first action. */
 .assignment-dialog{padding:0;background:var(--panel);color:var(--text);border:1px solid #46514c;border-radius:12px;width:min(420px,calc(100vw - 32px));max-width:none;max-height:calc(100dvh - 40px);overflow:auto;box-shadow:0 24px 70px #0008;animation:assignment-arrive .24s cubic-bezier(.16,1,.3,1)}
-.assignment-dialog.is-editing{width:min(560px,calc(100vw - 32px))}
+.assignment-dialog.is-editing{width:min(620px,calc(100vw - 32px))}
 .assignment-dialog::backdrop{background:#080d0caa;animation:assignment-backdrop .2s ease-out}
 .assignment-dialog-body{padding:28px}
 .assignment-dialog-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:9px}
@@ -177,10 +177,9 @@ nav button.active,.sidebar-bottom>button.active{background:#1e3930;color:#bcf0d9
 .task-external-link:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 .optional-attachment .drop-target{display:inline-flex;margin:0 0 12px}
 .optional-attachment-body>p{margin:2px 0 12px;color:#aebbb4;font-size:12px}
-.assignment-more{border-top:1px solid var(--line)}
-.assignment-more>summary{padding:14px 0;min-height:44px;font-size:12px;color:#bfcac5;gap:8px;margin:0!important}
-.assignment-more>summary>svg{margin-left:auto;transition:rotate .18s}
-.assignment-more[open]>summary>svg{rotate:180deg}
+.assignment-secondary-fields{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:16px;align-items:start;padding-top:16px;border-top:1px solid var(--line)}
+.assignment-secondary-fields textarea{min-height:68px;resize:vertical}
+.field-optional{float:right;color:var(--muted);font-size:11px}
 .assignment-dialog-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:26px}
 .assignment-dialog-footer .text-button{font-size:12px;min-height:36px}
 .assignment-form{margin-top:25px;display:grid;gap:20px}
@@ -262,7 +261,7 @@ nav button.active,.sidebar-bottom>button.active{background:#1e3930;color:#bcf0d9
 .library-empty>svg{color:#849e90;margin-bottom:16px}
 .library-empty h3{font-size:15px;font-weight:500;color:#cbd8d0}
 .library-empty p{font-size:12px;color:var(--muted);margin:8px auto 0}
-@media(max-width:760px){.assignment-dialog-body{padding:22px}.assignment-dialog-heading h2{font-size:21px}.assignment-form-pair{grid-template-columns:1fr}.assignment-dialog .icon-button{min-width:40px;min-height:40px}.assignment-dialog-footer .button{min-height:42px}.files-toolbar .list-filters{width:100%;flex-basis:100%;display:grid;grid-template-columns:1fr;gap:12px}.files-toolbar .search{width:100%;min-height:42px}.files-toolbar select{width:100%;min-height:42px}.library-drop{flex-wrap:wrap;gap:14px;padding:20px}.library-drop-copy{flex-basis:calc(100% - 42px)}.library-drop>.button{margin-left:37px;min-height:40px}.library-empty{padding:40px 12px}}
+@media(max-width:760px){.assignment-dialog-body{padding:22px}.assignment-dialog-heading h2{font-size:21px}.assignment-form-pair,.assignment-secondary-fields{grid-template-columns:1fr}.assignment-dialog .icon-button{min-width:40px;min-height:40px}.assignment-dialog-footer .button{min-height:42px}.files-toolbar .list-filters{width:100%;flex-basis:100%;display:grid;grid-template-columns:1fr;gap:12px}.files-toolbar .search{width:100%;min-height:42px}.files-toolbar select{width:100%;min-height:42px}.library-drop{flex-wrap:wrap;gap:14px;padding:20px}.library-drop-copy{flex-basis:calc(100% - 42px)}.library-drop>.button{margin-left:37px;min-height:40px}.library-empty{padding:40px 12px}}
 .repeat-setting{border-top:1px solid var(--line)}
 .repeat-trigger{width:100%;min-height:48px;display:flex;align-items:center;gap:10px;padding:12px 0;text-align:left;border-radius:5px;font-size:12px;color:#cbd7d0}
 .repeat-trigger:hover{background:#242b2b}.repeat-trigger>svg:first-child{color:var(--accent)}

@@ -52,14 +52,10 @@ function AssignmentForm({task,defaultSubject,tasks,rules,startRepeating,onSave,o
    <label>Subject<select value={sub} onChange={e=>setSub(e.target.value)} required><option value="">Choose subject</option>{SUBJECTS.map(s=><option value={s.id} key={s.id}>{s.short}</option>)}</select></label>
    <DateTimeField label="Deadline (optional)" name="due" value={deadline} onChange={setDeadline}/>
   </div>
-  <details className="assignment-more">
-   <summary>More details<ChevronDown size={15}/></summary>
-   <div className="assignment-extra-fields">
-    <label>Task type<select value={kind} onChange={e=>setKind(e.target.value)}><option value="file">Assignment with files</option><option value="online">Online assignment</option><option value="quiz">Quiz</option>{kind==='codeexpert'&&<option value="codeexpert">CodeExpert (existing)</option>}</select></label>
-
-    <label>Notes<textarea name="notes" defaultValue={task?.notes||''} rows={3}/></label>
-   </div>
-  </details>
+  <div className="assignment-secondary-fields">
+   <label>Task type<select value={kind} onChange={e=>setKind(e.target.value)}><option value="file">Assignment with files</option><option value="online">Online assignment</option><option value="quiz">Quiz</option>{kind==='codeexpert'&&<option value="codeexpert">CodeExpert (existing)</option>}</select></label>
+   <label>Notes <span className="field-optional">Optional</span><textarea name="notes" defaultValue={task?.notes||''} rows={2} placeholder="Add a note…"/></label>
+  </div>
   <div className="repeat-setting">
    <RepeatSelect value={repeatEvery} onChange={setRepeatEvery}/>
    {repeatEvery>0&&<div className="assignment-extra-fields repeat-fields">
@@ -94,7 +90,7 @@ export default function AssignmentDialog({task,defaultSubject,tasks,rules,files,
  const finished=taskEvents.find(event=>event.taskId===task?.id&&event.type==='finished');
  const online=task&&taskType(task)!=='file';
  const moodle=task&&moodleSectionForTask(task),codeExpert=task&&codeExpertUrlForTask(task);
- return <dialog ref={dialog} className={`assignment-dialog ${editing?'is-editing':''}`} aria-labelledby={titleId}
+ return <dialog ref={dialog} className={`assignment-dialog ${editing&&task?.kind!=='personal'?'is-editing':''}`} aria-labelledby={titleId}
   onCancel={e=>{e.preventDefault();editing&&task?cancelEdit():onClose();}}
   onClick={e=>{if(e.target===dialog.current){const r=dialog.current.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)onClose();}}}>
   <div className="assignment-dialog-body">
