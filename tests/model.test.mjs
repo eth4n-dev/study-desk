@@ -115,6 +115,17 @@ test('Changing a repeating interval uses the selected assignment as its anchor; 
  assert.equal(off.tasks.find(t=>t.id==='theory-sheet-4').status,anchor.status);
 });
 
+test('Changing a repeating assignment subject updates its series and untouched future entries',()=>{
+ const now=new Date('2026-10-20T10:00Z');let s=mergeCalendar(seedState(),events);
+ const anchor=s.tasks.find(t=>t.id==='theory-sheet-4');
+ s=saveAssignment(s,anchor,{every:1,availableFrom:'',until:'2026-12-18'},now);
+ const edited={...s.tasks.find(t=>t.id===anchor.id),subject:'russian'};
+ s=saveAssignment(s,edited,{every:1,availableFrom:'',until:'2026-12-18'},now);
+ assert.equal(repeatRuleForTask(s,edited).subject,'russian');
+ assert.equal(s.tasks.find(t=>t.id===anchor.id).subject,'russian');
+ assert.equal(s.tasks.find(t=>t.id==='theory-sheet-5').subject,'russian');
+});
+
 test('Relative availability follows the chosen weekday and time across each repeat',()=>{
  const now=new Date('2026-10-13T10:00Z');let s=mergeCalendar(seedState(),events);
  const anchor=s.tasks.find(t=>t.id==='analysis-serie-4');

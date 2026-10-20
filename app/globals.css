@@ -288,7 +288,7 @@ nav button.active,.sidebar-bottom>button.active{background:#1e3930;color:#bcf0d9
 /* Day-first dates with a lightweight calendar and a separate 24-hour time. */
 .date-time-field{min-width:0}.date-field-label{display:block;font-size:12px;color:#b5c2bd;margin-bottom:7px}
 .date-time-control{display:flex;align-items:center;min-width:0;border:1px solid var(--line);background:var(--bg);border-radius:6px;min-height:42px}
-.date-time-control:focus-within{outline:2px solid var(--blue);outline-offset:2px}
+.date-time-control:focus-within{outline:0;border-color:var(--accent)}
 .date-trigger{display:flex;align-items:center;gap:9px;padding:10px 11px;min-height:42px;min-width:0;flex:1;text-align:left;font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
 .date-trigger svg,.time-entry svg{color:var(--muted)}.date-trigger.empty-date{color:var(--muted)}
 .date-trigger:focus-visible{outline:none}.date-trigger:hover{background:var(--raised);border-radius:5px}
@@ -297,7 +297,7 @@ nav button.active,.sidebar-bottom>button.active{background:#1e3930;color:#bcf0d9
 .date-time-control>.embedded-time-picker{display:flex;align-items:center;flex-shrink:0;border-left:1px solid var(--line);padding:0 10px}
 .date-time-control>.embedded-time-picker .activity-time-trigger{width:auto;min-height:38px;padding:5px 0;border:0;border-radius:4px;background:transparent;font-size:13px;gap:7px}
 .date-time-control>.embedded-time-picker .activity-time-trigger:hover,.date-time-control>.embedded-time-picker .activity-time-trigger[aria-expanded="true"]{background:var(--raised);border:0}
-.date-time-control>.embedded-time-picker .activity-time-trigger:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.date-time-control>.embedded-time-picker .activity-time-trigger:focus-visible{outline:0}
 .date-clear{padding:5px;margin-right:6px;display:flex;align-items:center;color:var(--muted);border-radius:4px}
 .date-picker{position:fixed;z-index:60;padding:14px;background:var(--panel);border:1px solid #46514c;border-radius:8px;box-shadow:0 12px 35px #0007;overflow:auto}
 .date-picker-heading{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:7px}.date-picker-heading strong{font-size:14px;font-weight:500}.date-picker-heading .icon-button{min-width:32px;min-height:32px}
@@ -997,7 +997,8 @@ label>.choice-select{margin-top:7px}
 /* Keep keyboard focus visible without the heavy blue rings around form controls. */
 button:focus-visible,summary:focus-visible,.choice-trigger:focus-visible,.choice-option:focus-visible{outline:1px solid var(--accent);outline-offset:2px}
 input:focus-visible,select:focus-visible,textarea:focus-visible{outline:0;border-color:var(--accent);box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 50%,transparent)}
-.date-time-control:focus-within,.activity-task-search:focus-within{outline:0;border-color:var(--accent);box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 50%,transparent)}
+.date-time-control:focus-within{outline:0;border-color:var(--accent);box-shadow:none}
+.activity-task-search:focus-within{outline:0;border-color:var(--accent);box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 50%,transparent)}
 .date-trigger:focus-visible{outline:0}
 @media(max-width:760px){.activity-heading-actions .button{height:38px;min-height:38px;padding:6px 9px}}
 @media(max-width:640px){.admin-content{padding:32px 18px 60px}.admin-test-panel{display:block;padding:21px}.admin-test-actions{margin-top:20px}.admin-test-actions .button{width:100%}.admin-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-error-list>div{display:block}.admin-error-list time{display:block;margin-top:4px}}
