@@ -1,8 +1,8 @@
 'use client';
 import {useEffect,useId,useRef,useState} from 'react';
 import {createPortal} from 'react-dom';
-import {CalendarDays,Check,Clock3,X} from 'lucide-react';
-import {normalizeTime} from '../lib/date-input.mjs';
+import {CalendarDays,Check,X} from 'lucide-react';
+import ActivityTimeField from './activity-time-field';
 
 const DAYS=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 const FULL_DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
@@ -34,7 +34,7 @@ export default function RepeatAvailabilityField({every,deadline,value,onChange})
   <span className="date-field-label">Available from <span className="optional-label">Optional</span></span>
   <div className="date-time-control">
    <button ref={trigger} type="button" className={`date-trigger ${selected?'':'empty-date'}`} aria-label={`Available from: ${label}`} aria-haspopup="dialog" aria-expanded={open} aria-controls={open?`${id}-picker`:undefined} disabled={dueWeekday==null} onClick={()=>open?close():show()}><CalendarDays size={16}/><span>{label}</span></button>
-   <label className="time-entry"><Clock3 size={15}/><input aria-label="Available from time, 24-hour" type="text" inputMode="numeric" placeholder="Time" value={time} maxLength={5} pattern="(?:[01]?[0-9]|2[0-3]):?[0-5][0-9]" required={offset!=null} disabled={offset==null} onChange={e=>onChange({...value,time:e.target.value})} onBlur={()=>{const normal=normalizeTime(time);if(normal&&normal!==time)onChange({...value,time:normal});}}/></label>
+   <ActivityTimeField value={time} onChange={next=>onChange({...value,time:next})} showLabel={false} embedded disabled={offset==null}/>
    {offset!=null&&<button type="button" className="date-clear" aria-label="Clear available from" onClick={()=>onChange(null)}><X size={13}/></button>}
   </div>
   {dueWeekday==null&&<span className="field-hint">Set the deadline first.</span>}

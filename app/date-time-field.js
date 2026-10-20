@@ -1,12 +1,13 @@
 'use client';
 import {useEffect,useId,useRef,useState} from 'react';
 import {createPortal} from 'react-dom';
-import {CalendarDays,ChevronLeft,ChevronRight,Clock3,X} from 'lucide-react';
+import {CalendarDays,ChevronLeft,ChevronRight,X} from 'lucide-react';
 import {addDays,monthDays,shiftMonth,todayKey} from '../lib/model.mjs';
 import {displayDate,parseDisplayDate,normalizeTime} from '../lib/date-input.mjs';
 import {translate} from '../lib/i18n.mjs';
+import ActivityTimeField from './activity-time-field';
 
-export default function DateTimeField({label,name,defaultValue='',value,onChange,dateOnly=false,required=false,defaultTime='23:59',hint,maxDate}){
+export default function DateTimeField({label,name,defaultValue='',value,onChange,dateOnly=false,required=false,defaultTime='23:59',hint,maxDate,disabled=false}){
  const initial=value??defaultValue;
  const [day,setDay]=useState(initial.slice(0,10)),[time,setTime]=useState(initial.slice(11,16));
  const [open,setOpen]=useState(false),[month,setMonth]=useState((initial||todayKey()).slice(0,7));
@@ -40,9 +41,9 @@ export default function DateTimeField({label,name,defaultValue='',value,onChange
  return <div className="date-time-field">
   <span className="date-field-label" id={`${id}-label`}>{label}{!required&&<span className="optional-label">Optional</span>}</span>
   <div className="date-time-control">
-   <button ref={trigger} type="button" className={`date-trigger ${day?'':'empty-date'}`} aria-label={`${tr(label)}: ${day?displayDate(day):tr('Choose date')}`} aria-haspopup="dialog" aria-expanded={open} aria-controls={open?`${id}-picker`:undefined} onClick={()=>open?close():show()}><CalendarDays size={16}/><span>{day?displayDate(day):tr('Choose date')}</span></button>
-   {!dateOnly&&<label className="time-entry"><Clock3 size={15}/><input aria-label={`${label} time, 24-hour`} type="text" inputMode="numeric" placeholder="Time" value={time} maxLength={5} pattern="(?:[01]?[0-9]|2[0-3]):?[0-5][0-9]" required={Boolean(day)} onChange={e=>publish(day,e.target.value)} onBlur={()=>{if(validTime&&time!==validTime)publish(day,validTime);}}/></label>}
-   {!required&&day&&<button type="button" className="date-clear" aria-label={`Clear ${label.toLowerCase()}`} onClick={()=>publish('','')}><X size={13}/></button>}
+   <button ref={trigger} type="button" className={`date-trigger ${day?'':'empty-date'}`} aria-label={`${tr(label)}: ${day?displayDate(day):tr('Choose date')}`} aria-haspopup="dialog" aria-expanded={open} aria-controls={open?`${id}-picker`:undefined} disabled={disabled} onClick={()=>open?close():show()}><CalendarDays size={16}/><span>{day?displayDate(day):tr('Choose date')}</span></button>
+   {!dateOnly&&<ActivityTimeField value={time} onChange={next=>publish(day,next)} showLabel={false} embedded disabled={disabled||!day}/>}
+   {!required&&day&&<button type="button" className="date-clear" aria-label={`Clear ${label.toLowerCase()}`} disabled={disabled} onClick={()=>publish('','')}><X size={13}/></button>}
   </div>
   {name&&<input type="hidden" name={name} value={submitted}/>}
   {hint&&<span className="field-hint">{hint}</span>}

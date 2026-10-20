@@ -1557,3 +1557,6 @@ html[data-theme="light"] .activity-editor-when .date-time-control,
 html[data-theme="light"] .activity-time-trigger { background: #fff; color: var(--text) }
 html[data-theme="light"] .activity-time-trigger:hover,
 html[data-theme="light"] .activity-time-trigger[aria-expanded="true"] { background: #edf5ef }
+html[data-theme="light"] .date-time-control>.embedded-time-picker .activity-time-trigger { background: transparent }
+html[data-theme="light"] .date-time-control>.embedded-time-picker .activity-time-trigger:hover,
+html[data-theme="light"] .date-time-control>.embedded-time-picker .activity-time-trigger[aria-expanded="true"] { background: #edf5ef }
