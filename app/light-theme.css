@@ -1547,3 +1547,13 @@ html[data-theme="light"] .library-file-delete:hover:not(:disabled) { color: #9f3
 html[data-theme="light"] .bulk-file-row .choice-trigger,
 html[data-theme="light"] .bulk-file-fields .choice-trigger { background: #f8faf7; border-color: #d6dfd7 }
 html[data-theme="light"] .activity-editor .choice-trigger { background: #fff; color: var(--text) }
+html[data-theme="light"] .assignment-lifecycle { border: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: transparent }
+html[data-theme="light"] .assignment-lifecycle span,
+html[data-theme="light"] .assignment-lifecycle small { color: var(--muted) }
+html[data-theme="light"] .activity-task-trigger { background: #fff; color: var(--text) }
+html[data-theme="light"] .activity-task-trigger:hover,
+html[data-theme="light"] .activity-task-trigger[aria-expanded="true"] { background: #edf5ef }
+html[data-theme="light"] .activity-editor-when .date-time-control,
+html[data-theme="light"] .activity-time-trigger { background: #fff; color: var(--text) }
+html[data-theme="light"] .activity-time-trigger:hover,
+html[data-theme="light"] .activity-time-trigger[aria-expanded="true"] { background: #edf5ef }
